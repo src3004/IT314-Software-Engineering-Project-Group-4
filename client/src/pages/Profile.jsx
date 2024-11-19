@@ -1,11 +1,22 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import {useSelector} from 'react-redux';
+import { useRef, useState, useEffect } from 'react';
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
+import { app } from '../firebase.js';
+import { updateUserStart, updateUserSuccess, updateUserFailure, clearError } from '../redux/user/userSlice.js';
+import { useDispatch } from 'react-redux';
 
 export default function Profile() {
+  const fileRef = useRef(null);
+  const {currentUser, Loading, Error} = useSelector((state) => state.user);
   const [isEditable, setIsEditable] = useState(false);
+  const [file, setFile] = useState(undefined);
+  const [filePerc, setFilePerc] = useState(0);
+  const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
-  const { currentUser } = useSelector((state) => state.user);
-  
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -14,24 +25,99 @@ export default function Profile() {
   };
 
   const handleEditToggle = () => {
+    dispatch(clearError());
+    setUpdateSuccess(false);
+    if (isEditable) window.location.reload();
     setIsEditable(!isEditable);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Profile updated successfully!");
-    setIsEditable(false);
+    try {
+      dispatch(updateUserStart());
+      const res = await fetch(`api/user/update/${currentUser._id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success===false)
+      {
+        if (data.statusCode==500) data.message = 'Username and Email must be Unique!'
+        dispatch(updateUserFailure(data.message));
+        return;
+      }
+      dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
+      setIsEditable(false);
+    } catch (error) {
+      dispatch(updateUserFailure(error.message));
+    }
+  };
+
+  useEffect(() => {
+    if (file) {
+      handleFileUpload(file);
+    }
+  }, [file]);
+
+  useEffect(() => {
+    if (filePerc === 100) {
+      // Show the success message with a delay
+      setShowSuccessMessage(false);
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(true);
+      }, 2500); // 2.5-second delay
+
+      return () => clearTimeout(timer); // Cleanup timeout on unmount or when filePerc changes
+    }
+  }, [filePerc]);
+
+  const handleFileUpload = (file) => {
+    const storage = getStorage(app);
+    const fileName = `RealEstate/${new Date().getTime()}_${file.name}`;
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on('state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        setFilePerc(Math.round(progress));
+      },
+      (error) => {
+        setFileUploadError(true);
+      },
+      ()=>{
+        getDownloadURL(uploadTask.snapshot.ref).then
+        ((downloadURL) => 
+            setFormData({ ...formData, avatar: downloadURL })
+        );
+      }
+    );
   };
 
   return (
     <div className="container p-4 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <img
-          src={currentUser.avatar}
-          alt="profile"
-          className="rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2"
-        />
+      <input onChange={(e)=>{setFileUploadError(false); setFile(e.target.files[0]);}} type="file" ref={fileRef} hidden disabled={!isEditable} accept='image/*'/>
+      <img onClick={()=>fileRef.current.click()} src={formData.avatar || currentUser.avatar} alt="profile" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2' />
+      <p className='text-sm self-center'>
+          {fileUploadError ? <span className='text-red-700'>Error in Image Upload (Image must be less than 2 MB)</span> :
+            ((filePerc > 0) && (filePerc < 100)) ? (
+              <span className='text-slate-700'>
+                {`Uploading ${filePerc}%`}
+              </span>) :
+              (filePerc === 100 && showSuccessMessage) ? (
+                <span className='text-green-700'>
+                  Image Successfully Uploaded!
+                </span>
+              ) :
+              ("")
+        }
+        </p>
         <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-6">
           <table className="w-full border-collapse">
             <tbody>
@@ -44,6 +130,7 @@ export default function Profile() {
                     type="text"
                     id="username"
                     placeholder="Username"
+                    defaultValue={currentUser.username}
                     onChange={handleChange}
                     disabled={!isEditable}
                     className={`w-full rounded-md p-2 focus:outline-none focus:ring-2 ${
@@ -63,6 +150,7 @@ export default function Profile() {
                     type="text"
                     id="email"
                     placeholder="E-mail"
+                    defaultValue={currentUser.email}
                     onChange={handleChange}
                     disabled={!isEditable}
                     className={`w-full rounded-md p-2 focus:outline-none focus:ring-2 ${
@@ -81,7 +169,8 @@ export default function Profile() {
                   <input
                     type="text"
                     id="mobile"
-                    placeholder="Mobile"
+                    placeholder="Add Mobile Number"
+                    defaultValue={currentUser.mobile}
                     onChange={handleChange}
                     disabled={!isEditable}
                     className={`w-full rounded-md p-2 focus:outline-none focus:ring-2 ${
@@ -98,9 +187,9 @@ export default function Profile() {
                 </td>
                 <td className="py-2 px-4">
                   <input
-                    type="text"
+                    type="password"
                     id="password"
-                    placeholder="Password"
+                    placeholder="Change Password"
                     onChange={handleChange}
                     disabled={!isEditable}
                     className={`w-full rounded-md p-2 focus:outline-none focus:ring-2 ${
@@ -114,14 +203,14 @@ export default function Profile() {
             </tbody>
           </table>
         </div>
-
         <div className="flex space-x-4">
           {isEditable && (
             <button
-              type="submit"
-              className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-all"
+            type="submit"
+            className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition-all"
+            disabled={Loading}
             >
-              Save Changes
+              {Loading ? 'Loading...' : 'Save Changes'}
             </button>
           )}
           <button
@@ -131,6 +220,8 @@ export default function Profile() {
           >
             {isEditable ? "Cancel" : "Change Details"}
           </button>
+          <p className='text-red-700 mt-4'>{Error ? Error : ''}</p>
+          <p className='text-green-700 mt-4'>{updateSuccess ? 'Profile Updated Successfully!' : ''}</p>
         </div>
       </form>
       <div className="flex justify-between mt-5">
