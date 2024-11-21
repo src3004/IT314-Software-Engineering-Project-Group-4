@@ -4,6 +4,7 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/
 import { app } from '../firebase.js';
 import { updateUserStart, updateUserSuccess, updateUserFailure, clearError, deleteUserStart, deleteUserSuccess, deleteUserFailure, signOutUserStart, signOutUserSuccess, signOutUserFailure } from '../redux/user/userSlice.js';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -133,7 +134,7 @@ export default function Profile() {
 
   return (
     <div className="container p-4 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-7">Profile</h1>
+      <h1 className="text-3xl font-semibold text-center my-4">Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input onChange={(e)=>{setFileUploadError(false); setFile(e.target.files[0]);}} type="file" ref={fileRef} hidden disabled={!isEditable} accept='image/*'/>
       <img onClick={()=>fileRef.current.click()} src={formData.avatar || currentUser.avatar} alt="profile" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2' />
@@ -253,11 +254,14 @@ export default function Profile() {
           >
             {isEditable ? "Cancel" : "Change Details"}
           </button>
-          <p className='text-red-700 mt-4'>{Error ? Error : ''}</p>
-          <p className='text-green-700 mt-4'>{updateSuccess ? 'Profile Updated Successfully!' : ''}</p>
+          <Link className='bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700' to={"/create-listing"}>
+            Create Listing
+          </Link>
         </div>
+          <p className='text-red-700 mt-1'>{Error ? Error : ''}</p>
+          <p className='text-green-700 mt-1'>{updateSuccess ? 'Profile Updated Successfully!' : ''}</p>
       </form>
-      <div className="flex justify-between mt-5">
+      <div className="flex justify-between">
         <span onClick={handleDeleteUser} className="text-red-700 cursor-pointer">Delete account</span>
         <span onClick={handleSignOut} className="text-red-700 cursor-pointer">Sign out</span>
       </div>
