@@ -19,10 +19,10 @@ const listingSchema = new mongoose.Schema(
             required: true,
         },
         pinCode: {
-            type: Number,
+            type: String,
             required: true,
         },
-        Price: {
+        price: {
             type: Number,
             required: true,
         },

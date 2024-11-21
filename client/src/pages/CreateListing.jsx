@@ -2,16 +2,32 @@ import React, { useState } from "react";
 import "./CreateListing.css";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../firebase.js';
+import { useSelector } from 'react-redux';
 
 const CreateListing = () => {
+  const {currentUser} = useSelector(state => state.user);
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    address: '',
+    city: '',
+    pinCode: '',
+    price: 5000,
+    bedrooms: 1,
+    furnished: false,
+    parking: false,
+    gym: false,
+    garden: false,
+    type: 'rent',
     imageUrls: [],
+    visitSlots: [],
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   console.log(formData);
-  
   const handleImageSubmit = (e) => {
     if (files.length>0 && files.length+formData.imageUrls.length <7)
     {
@@ -71,61 +87,150 @@ const CreateListing = () => {
     });
   };
 
+  const handleSlotChange = (e) => {
+    const slots = 
+    setFormData({
+      ...formData,
+      visitSlots: Array.from(e.target.selectedOptions).map((option) => option.value),
+    });
+  };
+
+  const handleChange = (e) => {
+    if (e.target.id === 'sale' || e.target.id === 'rent')
+    {
+      setFormData({
+        ...formData,
+        type: e.target.id
+      });
+    };
+
+    if (e.target.id === 'furnished' || e.target.id === 'parking' || e.target.id === 'gym' || e.target.id === 'garden')
+    {
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.checked,
+      });
+    };
+
+    if (e.target.type === 'text' || e.target.id === 'pinCode' || e.target.type === 'textarea')
+    {
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.value
+      });
+    };
+
+    if (e.target.type === 'number' && e.target.id !== 'pinCode') {
+      // Convert value to a number, and handle empty string case
+      const numericValue = e.target.value === '' ? 0 : Number(e.target.value);
+      setFormData({
+        ...formData,
+        [e.target.id]: numericValue
+      });
+    };
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (formData.imageUrls.length === 0)
+    {
+      setError('Please select one or more images.');
+      return;
+    }
+    if (formData.visitSlots.length === 0)
+    {
+      setError('Please select one or more Visit Slots.');
+      return;
+    }
+    try {
+      setLoading(true);
+      setError(false);
+      const res = await fetch('/api/listing/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          userRef: currentUser._id
+        }),
+      });
+      const data = await res.json();
+      setLoading(false);
+      if (data.success === false)
+      {
+        setError(data.message);
+      }
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    };
+  };
+
   return (
     <div className={`add-property`}>
     <div className="add-property-page">
       <main className="form-container">
         <h2 className="text-lg"><strong>Add Property</strong></h2>
-        <form className="flex flex-col sm:flex-row justify-between">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-between">
             <div className={`first`}>
           <input
             type="text"
-            name="name"
             placeholder="Name"
             id = 'name'
             maxLength='62'
             minLength='10'
             required
+            onChange={handleChange}
+            value = {formData.name}
             />
           <textarea
-            name="description"
             placeholder="Description"
             id = 'description'
             required
+            onChange={handleChange}
+            value = {formData.description}
             ></textarea>
           <input
             type="text"
-            name="address"
             placeholder="Address"
             id = 'address'
             required
+            onChange={handleChange}
+            value = {formData.address}
             />
             <input
             type="text"
-            name="city"
             placeholder="City"
             id = 'city'
             required
+            onChange={handleChange}
+            value={formData.city}
             />
             <input
-            type="number"
-            name="pincode"
+            type='number'
             placeholder="Pin-Code"
-            id = 'pincode'
+            id = 'pinCode'
             required
+            onChange={handleChange}
+            value={formData.pinCode}
             />
             <div className="checkbox-group flex flex-wrap gap-3">
             <label>
             <input
             type="checkbox"
                 id="sale"
+                onChange={handleChange}
+                checked={formData.type === 'sale'}
               />
-              Sale
+              Sell
             </label>
             <label>
               <input
                 type="checkbox"
                 id="rent"
+                onChange={handleChange}
+                checked={formData.type === 'rent'}
               />
               Rent
             </label>
@@ -133,6 +238,8 @@ const CreateListing = () => {
               <input
                 type="checkbox"
                 id="parking"
+                onChange={handleChange}
+                checked={formData.parking===true}
               />
               Parking
             </label>
@@ -140,6 +247,8 @@ const CreateListing = () => {
               <input
                 type="checkbox"
                 id="furnished"
+                onChange={handleChange}
+                checked={formData.furnished===true}
               />
               Furnished
             </label>
@@ -147,6 +256,8 @@ const CreateListing = () => {
             <input
             type="checkbox"
                 id="gym"
+                onChange={handleChange}
+                checked={formData.gym===true}
               />
               Gym
             </label>
@@ -154,6 +265,8 @@ const CreateListing = () => {
             <input
             type="checkbox"
                 id="garden"
+                onChange={handleChange}
+                checked={formData.garden===true}
               />
               Garden
             </label>
@@ -161,9 +274,11 @@ const CreateListing = () => {
           <div className="beds-baths">
             <input
               type="number"
-              id="beds"
+              id="bedrooms"
               min="1"
               required
+              onChange={handleChange}
+              value={formData.bedrooms}
             />
             <label>Beds</label>
           </div>
@@ -171,21 +286,25 @@ const CreateListing = () => {
             <input
               type="number"
               id="price"
-              min="0"
+              min="5000"
+              max="100000000"
               required
+              onChange={handleChange}
+              value={formData.price}
             />
             <label>Regular Price (in ₹)</label>
           </div>
             </div>
             <div className={`second`}>
             <div className="file-upload flex flex-col">
-            <span>Images: The first image will be the cover (max 6)</span>
+            <span><strong>Images: The first image will be the cover (max 6)</strong></span>
             <div className="flex gap-4">
             <input
               onChange={(e)=>setFiles(e.target.files)}
               type="file"
               id="images"
               accept="image/*"
+              required
               multiple
             />
             <button type='button' disabled={uploading} onClick={handleImageSubmit} className="upload-button self-center">
@@ -202,32 +321,35 @@ const CreateListing = () => {
                 </div>
               ))
             }
-          <div className="time-slot">
+          <div className="time-slot mt-4">
+            <span><strong>Add Visit Slots</strong></span>
             <select
               multiple
               style={{ height: "350px" }} // Optional: Adjust height to show more options
               id="visitSlots"
+              onChange={handleSlotChange}
             >
-              <option id="ts1">6:00 AM - 7:00 AM</option>
-              <option id="ts2">7:00 AM - 8:00 AM</option>
-              <option id="ts3">8:00 AM - 9:00 AM</option>
-              <option id="ts4">9:00 AM - 10:00 AM</option>
-              <option id="ts5">10:00 AM - 11:00 AM</option>
-              <option id="ts6">11:00 AM - 12:00 PM</option>
-              <option id="ts7">12:00 PM - 1:00 PM</option>
-              <option id="ts8">1:00 PM - 2:00 PM</option>
-              <option id="ts9">2:00 PM - 3:00 PM</option>
-              <option id="ts10">3:00 PM - 4:00 PM</option>
-              <option id="ts11">4:00 PM - 5:00 PM</option>
-              <option id="ts12">5:00 PM - 6:00 PM</option>
-              <option id="ts13">6:00 PM - 7:00 PM</option>
-              <option id="ts14">7:00 PM - 8:00 PM</option>
+              <option id="ts1" value="6:00 AM - 7:00 AM">6:00 AM - 7:00 AM</option>
+              <option id="ts2" value="7:00 AM - 8:00 AM">7:00 AM - 8:00 AM</option>
+              <option id="ts3" value="8:00 AM - 9:00 AM">8:00 AM - 9:00 AM</option>
+              <option id="ts4" value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+              <option id="ts5" value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+              <option id="ts6" value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+              <option id="ts7" value="12:00 PM - 1:00 PM">12:00 PM - 1:00 PM</option>
+              <option id="ts8" value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+              <option id="ts9" value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+              <option id="ts10" value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+              <option id="ts11" value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+              <option id="ts12" value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+              <option id="ts13" value="6:00 PM - 7:00 PM">6:00 PM - 7:00 PM</option>
+              <option id="ts14" value="7:00 PM - 8:00 PM">7:00 PM - 8:00 PM</option>
             </select>
           </div>
           <button type="submit" className="submit-button">
-            Add Property
+            {loading ? 'Adding...' : 'Add Property'}
           </button>
-            </div>
+            {error && <p className="text-red-700 text-center">{error}</p>}
+          </div>
         </form>
       </main>
     </div>
