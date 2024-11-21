@@ -75,12 +75,14 @@ export default function Login() {
   };
   // console.log(formData);
   const handleRegisterClick = () => {
+    setError(null);
     dispatch(clearError());
     setIsActive(true);
   };
 
   const handleLoginClick = () => {
     setError(null);
+    dispatch(clearError());
     setIsActive(false);
   };
 
