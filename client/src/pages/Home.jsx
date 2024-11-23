@@ -5,14 +5,24 @@ export default function Home() {
   const [properties, setProperties] = useState([]);
   const fetchProperties = async (query) => {
     try {
-      let url = 'http://localhost:5001/api/properties';
-      if (query) {
-        url += `?searchQuery=${encodeURIComponent(query)}`; 
+      let baseUrl = 'http://localhost:5001/api/properties';
+      let searchCity = '';
+      const cityResponse = await fetch(
+        'https://api.geoapify.com/v1/ipinfo?&apiKey=7ef05e518d324a3d937232d6b95c1698'
+      );
+      const cityData = await cityResponse.json();
+
+      if (cityData?.city?.name) {
+        searchCity = cityData.city.name;
       }
-      const response = await axios.get(url);
+      const searchParam = query || searchCity;
+      if (searchParam) {
+        baseUrl += `?searchQuery=${encodeURIComponent(searchParam)}`;
+      }
+      const response = await axios.get(baseUrl);
       setProperties(response.data);
     } catch (error) {
-      console.error('Error fetching properties:', error);
+      console.error('Error fetching properties:', error.message);
     }
   };
   useEffect(() => {
@@ -23,7 +33,13 @@ export default function Home() {
     <div style={{ display: 'flex' }}>
       <div style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Featured Properties</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '1rem',
+          }}
+        >
           {properties.length > 0 ? (
             properties.map((property) => (
               <div
@@ -37,7 +53,7 @@ export default function Home() {
               >
                 <img
                   src={property.image}
-                  alt={property.title || 'Property'}
+                  alt={property.title || 'Property Image'} 
                   style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                 />
                 <div style={{ padding: '1rem' }}>
@@ -51,9 +67,7 @@ export default function Home() {
                       marginTop: '1rem',
                     }}
                   >
-                    <span style={{ fontWeight: 'bold', color: '#28a745' }}>
-                      {property.price}
-                    </span>
+                    <span style={{ fontWeight: 'bold', color: '#28a745' }}>{property.price}</span>
                     <button
                       style={{
                         padding: '0.5rem 1rem',
