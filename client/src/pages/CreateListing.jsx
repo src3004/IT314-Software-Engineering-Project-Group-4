@@ -4,6 +4,7 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/
 import { app } from '../firebase.js';
 import { useSelector } from 'react-redux';
 import './Style.css';
+import { useNavigate } from 'react-router-dom';
 
 const CreateListing = () => {
   const {currentUser} = useSelector(state => state.user);
@@ -28,7 +29,8 @@ const CreateListing = () => {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(formData);
+  const navigate = useNavigate();
+
   const handleImageSubmit = (e) => {
     if (files.length>0 && files.length+formData.imageUrls.length <7)
     {
@@ -122,7 +124,6 @@ const CreateListing = () => {
     };
 
     if (e.target.type === 'number' && e.target.id !== 'pinCode') {
-      // Convert value to a number, and handle empty string case
       const numericValue = e.target.value === '' ? 0 : Number(e.target.value);
       setFormData({
         ...formData,
@@ -162,6 +163,7 @@ const CreateListing = () => {
       {
         setError(data.message);
       }
+      navigate(`/listings/${data._id}`);
     } catch (error) {
       setError(error.message);
       setLoading(false);
@@ -346,7 +348,7 @@ const CreateListing = () => {
               <option id="ts14" value="7:00 PM - 8:00 PM">7:00 PM - 8:00 PM</option>
             </select>
           </div>
-          <button type="submit" className="submit-button">
+          <button disabled={loading || uploading} type="submit" className="submit-button">
             {loading ? 'Adding...' : 'Add Property'}
           </button>
             {error && <p className="text-red-700 text-center">{error}</p>}
