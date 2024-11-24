@@ -2,7 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
-import About from './pages/About'
+import AboutUs from './pages/AboutUs'
 import Header from './components/Header'
 import PrivateRoute from './components/PrivateRoute'
 import Transaction from './pages/Transaction'
@@ -18,7 +18,7 @@ export default function App() {
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
-    <Route path="/about" element={<About />} />
+    <Route path="/about-us" element={<AboutUs />} />
     <Route path="/transaction" element={<Transaction />} />
     <Route path="/listing/:listingId" element={<Listing />} />
     <Route element={<PrivateRoute />} >
