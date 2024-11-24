@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 export default function Header() {
   const {currentUser} = useSelector(state => state.user);
   return (
-    <nav className="bg-green-600 text-white p-3 fixed top-0 left-0 w-full z-50 shadow-md">
+    <nav className="bg-green-600 text-white p-3 fixed top-0 left-0 w-full z-50 shadow-md" style={{zIndex: 1000}}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="text-xl font-bold">
