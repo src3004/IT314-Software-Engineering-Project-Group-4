@@ -1,19 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Heart } from 'lucide-react';
-import pop from './photos';
-
-const images = pop.images;
+import pop from './photos.js';
+import { useParams } from 'react-router-dom';
+import furnishedIcon from '../assets/furnished-icon.png';
+import parkingIcon from '../assets/parking-icon.png';
+import locationIcon from '../assets/location-icon.png';
+import gardenIcon from '../assets/garden-icon.png';
+import gymIcon from '../assets/gym-icon.png';
 
 const Listing = () => {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (listing ? (prevIndex === 0 ? listing.imageUrls.length - 1 : prevIndex - 1): 0));
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (listing ? (prevIndex === listing.imageUrls.length - 1 ? 0 : prevIndex + 1): 0));
   };
+  
+  const params = useParams();
+  const [listing, setListing] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchListing = async() => {
+      try {
+        setError(false);
+        setLoading(true);
+        const res = await fetch(`/api/listing/get/${params.listingId}`);
+        const data = await res.json();
+        if (data.success === false)
+        {
+          setError(true);
+          setLoading(false);
+          return;
+        }
+        setListing(data);
+        setError(false);
+        setLoading(false);
+      } catch(error) {
+        setError(true);
+        setLoading(false);
+      }
+    };
+
+    fetchListing();
+  }, [params.listingId]);
 
   const styles = {
     container: {
@@ -22,11 +56,11 @@ const Listing = () => {
     },
     heroSection: {
       width: '100%',
-      height: '600px',
+      height: '500px',
       position: 'relative',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
+      // alignItems: 'center',
       overflow: 'hidden',
     },
     heroImage: {
@@ -160,25 +194,25 @@ const Listing = () => {
     featureDot1: {
       width: '12px',
       height: '12px',
-      backgroundColor:pop.furnish?'#16a34a':'Red',
+      backgroundColor: (listing ? (listing.furnished ? '#16a34a': 'Red') : 'Gray'), 
       borderRadius: '50%',
     },
        featureDot2: {
       width: '12px',
       height: '12px',
-      backgroundColor:pop.gym?'#16a34a':'Red',
+      backgroundColor:(listing ? (listing.gym ? '#16a34a': 'Red') : 'Gray'),
       borderRadius: '50%',
     },
        featureDot3: {
       width: '12px',
       height: '12px',
-      backgroundColor:pop.garden?'#16a34a':'Red',
+      backgroundColor:(listing ? (listing.parking ? '#16a34a': 'Red') : 'Gray'),
       borderRadius: '50%',
     },
        featureDot4: {
       width: '12px',
       height: '12px',
-      backgroundColor:pop.parki?'#16a34a':'Red',
+      backgroundColor:(listing ? (listing.garden ? '#16a34a': 'Red') : 'Gray'),
       borderRadius: '50%',
     },
 
@@ -194,46 +228,51 @@ const Listing = () => {
       display: 'flex',
       transition: 'transform 0.5s ease-in-out',
       transform: `translateX(-${currentIndex * 100}%)`,
-      //width: `${images.length * 100}%`,
+      width: `${(listing? listing.imageUrls.length: 1) * 100}%`,
   },
   carouselImage: {
           width: '100%',
-          height: '100%',
-          objectFit: 'contain',
+          height: '500px',
+          objectFit: 'cover',
           flexShrink: 0,
         },
   };
 
+
   return (
-    <div style={styles.container}>
-      {/* Hero Image Section */}
+    <main>
+      {loading && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Loading...</p>}
+      {error && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Something went Wrong!</p>}
+      {listing && !loading && !error && (
+        <div style={styles.container}>
+
       <div style={styles.heroSection}>
-  <button
+  {listing.imageUrls.length > 1 && <button
     style={{ ...styles.navigationButton, ...styles.prevButton }}
     onClick={goToPrevious}
   >
-    &#8592;
-  </button>
-  {/* Add a sliding wrapper for images */}
-  <div
-    style={styles.carouselImages}>
-    {pop.images.map((image, index) => (
+    &#10094;
+  </button>}
+
+  <div style={styles.carouselImages}>
+    {listing.imageUrls.map((url, index) => (
       <img
+      className='h-[50px]'
         key={index}
-        src={image}
+        src={url}
         alt={`Slide ${index + 1}`}
         style={styles.carouselImage}
       />
     ))}
   </div>
-  <button
+  {listing.imageUrls.length>1 && <button
     style={{ ...styles.navigationButton, ...styles.nextButton }}
     onClick={goToNext}
   >
-    &#8594;
-  </button>
+    &#10095;
+  </button>}
   <div style={styles.navigationDots}>
-    {images.map((_, index) => (
+    {listing.imageUrls.map((_, index) => (
       <div
         key={index}
         style={{
@@ -241,20 +280,20 @@ const Listing = () => {
           ...(index === currentIndex ? styles.activeDot : {}),
         }}
         onClick={() => setCurrentIndex(index)}
-      ></div>
-    ))}
+        ></div>
+      ))}
   </div>
 </div>
 
 
-      {/* Content Section */}
+
       <div style={styles.contentSection}>
         <div style={styles.contentWrapper}>
-          {/* Header Section */}
+
           <div style={styles.headerSection}>
             <div>
-              <h1 style={styles.title}>{pop.name}</h1>
-              <p style={styles.address}>{pop.addr}</p>
+              <h1 style={styles.title}>{listing.name}</h1>
+              <p style={styles.address}>{listing.address}</p>
             </div>
             <button
               onClick={() => setIsWishlisted(!isWishlisted)}
@@ -264,53 +303,59 @@ const Listing = () => {
                 color={isWishlisted ? 'white' : '#16a34a'}
                 fill={isWishlisted ? 'white' : 'none'}
                 size={20}
-              />
+                />
               {isWishlisted ? 'Wishlisted' : 'Add to Wishlist'}
             </button>
           </div>
 
-          {/* Property Stats */}
+
           <div style={styles.statsContainer}>
             <div style={styles.statCard}>
               <p style={styles.statLabel}>Price</p>
-              <p style={styles.statValue}>{pop.price}</p>
+              <p style={styles.statValue}>₹ {listing.price} {listing.type==='rent'? '/month': ''}</p>
             </div>
             <div style={styles.statCard}>
               <p style={styles.statLabel}>Bedrooms</p>
-              <p style={styles.statValue}>{pop.bed}</p>
+              <p style={styles.statValue}>{listing.bedrooms}</p>
             </div>
             <div style={styles.statCard}>
-              <p style={styles.statLabel}>Type</p>
-              <p style={styles.statValue}>{pop.type}</p>
+              <p style={styles.statLabel}>For</p>
+              <p style={styles.statValue}>{listing.type==='sale' ? 'Sale': 'Rent'}</p>
             </div>
           </div>
 
-          {/* Description */}
+
           <div style={styles.descriptionCard}>
             <h2 style={styles.descriptionTitle}>Property Description</h2>
-            <p style={styles.descriptionText}>{pop.desc}</p>
+            <p style={styles.descriptionText}>{listing.description}</p>
             <div style={styles.featuresGrid}>
               <div style={styles.featureItem}>
                 <div style={styles.featureDot1}></div>
+                <img src={furnishedIcon} className='h-5' alt="furnished icon" />
                 <span style={styles.featureText}>Furnished</span>
               </div>
               <div style={styles.featureItem}>
                 <div style={styles.featureDot2}></div>
+                <img src={gymIcon} className='h-6' alt="gym icon" />
                 <span style={styles.featureText}>Gym</span>
               </div>
               <div style={styles.featureItem}>
                 <div style={styles.featureDot3}></div>
+                <img src={parkingIcon} className='h-6' alt="parking icon" />
                 <span style={styles.featureText}>Parking</span>
               </div>
               <div style={styles.featureItem}>
                 <div style={styles.featureDot4}></div>
+                <img src={gardenIcon} className='h-6' alt="garden icon" />
                 <span style={styles.featureText}>Garden</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      )}
+    </main>
   );
 };
 

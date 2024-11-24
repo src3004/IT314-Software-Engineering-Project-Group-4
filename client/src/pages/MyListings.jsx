@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import "./MyListings.css";
 
-import bedroomIcon from '../assets/bed-icon.png';
+import furnishedIcon from '../assets/furnished-icon.png';
 import parkingIcon from '../assets/parking-icon.png';
 import noParkingIcon from '../assets/noparking-icon.png';
 import locationIcon from '../assets/location-icon.png';
@@ -68,7 +68,7 @@ export default function MyListings() {
         {userListings && userListings.length>0 &&
           userListings.map((listing) => (
             <div key={listing._id} className="property-card">
-            <Link to={`/listings/${listing._id}`}>
+            <Link to={`/listing/${listing._id}`}>
             <div
               className="property-image"
               style={{
@@ -76,7 +76,7 @@ export default function MyListings() {
               }}
               ></div>
               </Link>
-            <Link to={`/listings/${listing._id}`}><h3 className='font-semibold'>{listing.name}</h3></Link>
+            <Link to={`/listing/${listing._id}`}><h3 className='font-semibold'>{listing.name}</h3></Link>
             <p className="price">₹ {listing.price}</p>
              <div className="location details">
               <span>
@@ -91,7 +91,7 @@ export default function MyListings() {
             <div className="details">
               <span>
                 <img
-                  src={bedroomIcon}
+                  src={furnishedIcon}
                   alt="Bedroom"
                   className="icon bedroom"
                   />
