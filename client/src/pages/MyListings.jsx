@@ -36,6 +36,27 @@ export default function MyListings() {
 
     fetchListings();
   }, [currentUser]);
+
+  const handleListingDelete = async (listingId) => {
+    try {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false)
+      {
+        console.log(data.message);
+        return;
+      }
+
+      setUserListings((prev) =>
+        prev.filter((listing) => listing._id !== listingId)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="Manage_Listings">
       <h2 className="font-semibold text-2xl">Manage Your Listings</h2>
@@ -87,7 +108,7 @@ export default function MyListings() {
             <div className="buttons">
               <button className="edit-btn">Edit</button>
               <hr className="button-separator" />
-              <button className="delete-btn">Delete</button>
+              <button onClick={()=>handleListingDelete(listing._id)} className="delete-btn">Delete</button>
             </div>
           </div>
           ))
