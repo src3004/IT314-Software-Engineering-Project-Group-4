@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar.jsx';
 import PropertyList from '../components/PropertyList.jsx';
 import styles from '../components/style.jsx';
+import './Styles.css';
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');

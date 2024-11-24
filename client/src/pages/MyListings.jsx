@@ -1,94 +1,70 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import "./MyListings.css";
 
-// Import images from src/assets folder
 import bedroomIcon from '../assets/bed-icon.png';
 import parkingIcon from '../assets/parking-icon.png';
 import noParkingIcon from '../assets/noparking-icon.png';
 import locationIcon from '../assets/location-icon.png';
 
-// Import property images
-import modernFamilyHomeImg from '../assets/1.jpg';
-import parshwaLuxuriaImg from '../assets/2.jpg';
-import maitriElevateImg from '../assets/3.jpg';
-import aadhyaArambhImg from '../assets/4.jpg';
-import venusDeshnaImg from '../assets/5.jpg';
-import theSovereignImg from '../assets/6.jpg';
+export default function MyListings() {
+  const { currentUser } = useSelector((state) => state.user);
+  const [userListings, setUserListings] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  console.log(userListings);
 
-const MyListings = () => {
-  const properties = [
-    {
-      name: "Serenity Heights",
-      price: "$750000",
-      location: "Gandhinagar",
-      bedrooms: 5,
-      parking: true,
-      image: modernFamilyHomeImg,
-    },
-    {
-      name: "Golden Acres Townhomes",
-      price: "$700000",
-      location: "Rajkot",
-      bedrooms: 3,
-      parking: false,
-      image: parshwaLuxuriaImg,
-    },
-    {
-      name: "Maplewood Residences",
-      price: "$600000",
-      location: "Ahmedabad",
-      bedrooms: 1,
-      parking: false,
-      image: maitriElevateImg,
-    },
-    {
-      name: "Evergreen Villas",
-      price: "$550000",
-      location: "Anand",
-      bedrooms: 2,
-      parking: true,
-      image: aadhyaArambhImg,
-    },
-    {
-      name: "Cedar Ridge Estates",
-      price: "$600000",
-      location: "Surat",
-      bedrooms: 2,
-      parking: true,
-      image: venusDeshnaImg,
-    },
-    {
-      name: "Blue Horizon Apartments",
-      price: "$575000",
-      location: "Jamnagar",
-      bedrooms: 3,
-      parking: false,
-      image: theSovereignImg,
-    },
-  ];
+  useEffect(() => {
+    const fetchListings = async () => {
+      setLoading(true);
+      setError(false);
+      try {
+        const res = await fetch(`/api/user/listings/${currentUser._id}`);
+        const data = await res.json();
+        if (data.success === false) {
+          setError(true);
+          return;
+        }
+        setUserListings(data);
+      } catch (err) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchListings();
+  }, [currentUser]);
   return (
     <div className="Manage_Listings">
       <h2 className="font-semibold text-2xl">Manage Your Listings</h2>
+      {error && <p className='text-red-700 mt-5'>Error showing Properties</p>}
+      {userListings && (userListings.length < 1) &&
+        <div className='text-gray-700' style={{padding: 225}}>No Properties to Display</div>
+      }
       <div className="properties-grid">
-        {properties.map((property, index) => (
-          <div key={index} className="property-card">
+        {userListings && userListings.length>0 &&
+          userListings.map((listing) => (
+            <div key={listing._id} className="property-card">
+            <Link to={`/listings/${listing._id}`}>
             <div
               className="property-image"
               style={{
-                backgroundImage: `url(${property.image})`,
+                backgroundImage: `url(${listing.imageUrls[0]})`,
               }}
-            ></div>
-            <h3>{property.name}</h3>
-            <p className="price">{property.price}</p>
-            <div className="location details">
+              ></div>
+              </Link>
+            <Link to={`/listings/${listing._id}`}><h3 className='font-semibold'>{listing.name}</h3></Link>
+            <p className="price">₹ {listing.price}</p>
+             <div className="location details">
               <span>
                 <img
                   src={locationIcon}
                   alt="Location"
                   className="icon"
-                />
-                {property.location}
+                  />
+                {listing.city}
               </span>
             </div>
             <div className="details">
@@ -97,15 +73,15 @@ const MyListings = () => {
                   src={bedroomIcon}
                   alt="Bedroom"
                   className="icon bedroom"
-                />
-                {property.bedrooms}
+                  />
+                {listing.bedrooms}
               </span>
               <span>
                 <img
-                  src={property.parking ? parkingIcon : noParkingIcon}
+                  src={listing.parking ? parkingIcon : noParkingIcon}
                   alt="Parking"
                   className="icon"
-                />
+                  />
               </span>
             </div>
             <div className="buttons">
@@ -114,10 +90,9 @@ const MyListings = () => {
               <button className="delete-btn">Delete</button>
             </div>
           </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   );
 };
-
-export default MyListings;

@@ -3,7 +3,7 @@ import "./CreateListing.css";
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from '../firebase.js';
 import { useSelector } from 'react-redux';
-import './Style.css';
+import './Styles.css';
 import { useNavigate } from 'react-router-dom';
 
 const CreateListing = () => {
@@ -179,7 +179,7 @@ const CreateListing = () => {
             <div className={`first`}>
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Title"
             id = 'name'
             maxLength='62'
             minLength='10'
