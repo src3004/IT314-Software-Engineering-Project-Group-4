@@ -115,19 +115,11 @@ const CreateListing = () => {
       });
     };
 
-    if (e.target.type === 'text' || e.target.id === 'pinCode' || e.target.type === 'textarea')
+    if (e.target.type === 'text' || e.target.type === 'number' || e.target.type === 'textarea')
     {
       setFormData({
         ...formData,
         [e.target.id]: e.target.value
-      });
-    };
-
-    if (e.target.type === 'number' && e.target.id !== 'pinCode') {
-      const numericValue = e.target.value === '' ? 0 : Number(e.target.value);
-      setFormData({
-        ...formData,
-        [e.target.id]: numericValue
       });
     };
   };

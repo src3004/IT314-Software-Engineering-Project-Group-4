@@ -287,7 +287,7 @@ export default function Profile() {
             {isEditable ? "Cancel" : "Change Details"}
           </button>
           <Link className='bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700' to={"/create-listing"}>
-            Create Listing
+            Add Property
           </Link>
         </div>
           <p className='text-red-700 mt-1'>{Error ? Error : ''}</p>
