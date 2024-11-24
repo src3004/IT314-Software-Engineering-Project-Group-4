@@ -106,7 +106,7 @@ export default function MyListings() {
               </span>
             </div>
             <div className="buttons">
-              <button className="edit-btn">Edit</button>
+              <Link to={`/update-listing/${listing._id}`} className="edit-btn"><button>Edit</button></Link>
               <hr className="button-separator" />
               <button onClick={()=>handleListingDelete(listing._id)} className="delete-btn">Delete</button>
             </div>

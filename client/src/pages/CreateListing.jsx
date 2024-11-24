@@ -21,7 +21,7 @@ const CreateListing = () => {
     parking: false,
     gym: false,
     garden: false,
-    type: 'rent',
+    type: 'sale',
     imageUrls: [],
     visitSlots: [],
   });
