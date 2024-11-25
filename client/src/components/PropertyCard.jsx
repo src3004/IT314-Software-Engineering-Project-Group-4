@@ -9,7 +9,7 @@ const PropertyCard = ({ property }) => (
       <p>{property.city}</p>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem' }}>
         <span style={{ fontWeight: 'bold', color: '#28a745' }}>₹ {property.price}</span>
-        <Link to={`/listing/${property._id}`} style={{ padding: '0.5rem 1rem', backgroundColor: '#28a745', color: 'white', border: 'none', cursor: 'pointer' }}>
+        <Link to={`/listing/${property._id}`} className='rounded-md' style={{ padding: '0.5rem 1rem', backgroundColor: '#28a745', color: 'white', border: 'none', cursor: 'pointer' }}>
           View Details
         </Link>
       </div>

@@ -136,7 +136,7 @@ export default function Profile() {
 
   return (
     <div className="container p-4 max-w-lg mx-auto">
-      <h1 className="text-3xl font-semibold text-center my-4">Profile</h1>
+      <h1 className="text-3xl font-semibold text-center my-4" style={{color: '#2d9c2d'}}>Profile</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input onChange={(e)=>{setFileUploadError(false); setFile(e.target.files[0]);}} type="file" ref={fileRef} hidden disabled={!isEditable} accept='image/*'/>
       <img onClick={()=>fileRef.current.click()} src={formData.avatar || currentUser.avatar} alt="profile" className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2' />
