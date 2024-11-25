@@ -487,10 +487,10 @@ const Listing = () => {
           </form>
           <div>
           <h2 style={styles.descriptionTitle}>Pay Token Amount</h2>
-          <button
+          <Link to={`/transaction/${currentUser._id}/${listing.userRef}/${listing._id}`}
             className='btn bg-green-600 p-2 text-md text-white font-semibold rounded-md mb-3'>
             Pay Token Amount
-          </button>
+          </Link>
           </div>
           </div>
           ): (!currentUser)? (

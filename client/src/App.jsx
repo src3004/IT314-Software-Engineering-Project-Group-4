@@ -19,9 +19,9 @@ export default function App() {
     <Route path="/" element={<Home />} />
     <Route path="/login" element={<Login />} />
     <Route path="/about-us" element={<AboutUs />} />
-    <Route path="/transaction" element={<Transaction />} />
     <Route path="/listing/:listingId" element={<Listing />} />
     <Route element={<PrivateRoute />} >
+      <Route path="/transaction/:buyerId/:sellerId/:listingId" element={<Transaction />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/create-listing" element={<CreateListing />} />
       <Route path="/my-listings" element={<MyListings />} />
