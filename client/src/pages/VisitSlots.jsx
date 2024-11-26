@@ -1,67 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './VisitSlots.css';
+import { useSelector } from 'react-redux';
 
 const VisitSlots = () => {
-  const [slots, setSlots] = useState([
-    {
-      id: 1,
-      name: 'Sunrise Haven',
-      date: '07/12/2024',
-      time: '11.00 am to 12.00 pm',
-      status: 'Pending',
-    },
-    {
-      id: 2,
-      name: 'Oakwood Gardens',
-      date: '08/11/2024',
-      time: '4.00 pm to 5.00 pm',
-      status: 'Pending',
-    },
-    {
-      id: 3,
-      name: 'Haven Heights',
-      date: '14/10/2024',
-      time: '2.00 pm to 3.00 pm',
-      status: 'Visited Successfully',
-    },
-  ]);
+  const { currentUser } = useSelector((state) => state.user);
+  const [userVisitSlots, setUserVisitSlots] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
- 
+  useEffect(() => {
+    const fetchVisitSlots = async () => {
+      setLoading(true);
+      setError(false);
+      try {
+        const res = await fetch(`/api/user/visit-slots/${currentUser._id}`);
+        const data = await res.json();
+        if (data.success === false) {
+          setError(true);
+          return;
+        }
+        setUserVisitSlots(data);
+      } catch (err) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchVisitSlots();
+  }, [currentUser]);
 
   return (
     <div className="bookedslots">
-      <h1 className="bookedslots-title">Booked Slots</h1>
-      <div className="bookedslots-container">
-        {slots.map((slot) => (
-          <div key={slot.id} className="bookedslots-card">
-            <img src={slot.image} alt={slot.name} className="bookedslots-image" />
-            <div className="bookedslots-details">
-              <h2>{slot.name}</h2>
-              <p>Date: {slot.date}</p>
-              <p>Time: {slot.time}</p>
-            </div>
-            <div className="bookedslots-actions">
-              <span
-                className={`bookedslots-status ${
-                  slot.status === 'Pending' ? 'pending' : 'visited'
-                }`}
-              >
-                {slot.status}
-              </span>
-              {slot.status === 'Pending' && (
-                <button
-                  className="bookedslots-cancel-button"
+      <h2 className="font-semibold text-2xl text-center mb-4" style={{color: '#2d9c2d'}}>Booked Slots</h2>
+      {loading && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Loading...</p>}
+      {error && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Error showing Properties</p>}
+      {userVisitSlots && !loading && !error && (
+        <div className="bookedslots-container">
+          {userVisitSlots.map((visitSlot) => (
+            <div key={visitSlot._id} className="bookedslots-card">
+              <img src={visitSlot.image} alt={visitSlot.name} className="bookedslots-image" />
+              <div className="bookedslots-details">
+                <h2>{visitSlot.name}</h2>
+                <p>Date: {visitSlot.date}</p>
+                <p>Time: {visitSlot.visitSlot}</p>
+              </div>
+              <div className="bookedslots-actions">
+                <span
+                  className={`bookedslots-status ${visitSlot.status}`}
                 >
-                  Cancel Appointment
-                </button>
-              )}
+                  {((visitSlot.status==='visited')?('Visited'):((visitSlot.status==='pending')?('Pending'):('Cancelled')))}
+                </span>
+                {visitSlot.status === 'pending' && (
+                  <button
+                    className="bookedslots-cancel-button"
+                  >
+                    Cancel Appointment
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-        {slots.length === 0 && (
-          <p className="bookedslots-no-appointments">No appointments booked.</p>
-        )}
-      </div>
+          ))}
+          {userVisitSlots.length === 0 && (
+            <p className="bookedslots-no-appointments font-semibold">No appointments booked.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
