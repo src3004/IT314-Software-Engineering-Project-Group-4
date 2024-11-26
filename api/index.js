@@ -5,6 +5,7 @@ import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
 import propertyRouter from './routes/property.route.js';
+import transactionRouter from './routes/transaction.route.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 dotenv.config();
@@ -38,6 +39,7 @@ app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
 app.use('/api/property', propertyRouter);
+app.use('/api/transaction', transactionRouter);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
