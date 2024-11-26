@@ -121,3 +121,19 @@ export const getUserVisitsSlots = async (req, res, next) => {
         return next(errorHandler(401, 'You can only view your own visit slots!'));
     }
 };
+
+export const getUserPendingVisitors = async (req, res, next) => {
+    if (req.user.id === req.params.id)
+    {
+        try {
+            const pendingVisitors = await VisitSlot.find({sellerId: req.params.id});
+            res.status(200).json(pendingVisitors);
+        } catch (error) {
+            next(error);
+        }
+    }
+    else
+    {
+        return next(errorHandler(401, 'You can only view your own pending visitors!'));
+    }
+};

@@ -297,6 +297,7 @@ const Listing = () => {
           ...formData,
           buyerId: currentUser._id,
           sellerId: listing.userRef,
+          buyerName: currentUser.username,
           name: listing.name,
           image: listing.imageUrls[0]
         }),

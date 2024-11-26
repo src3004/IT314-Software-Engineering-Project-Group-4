@@ -8,9 +8,13 @@ const visitSlotSchema = new mongoose.Schema(
         },
         sellerId: {
             type: String,
-            requred: true,
+            required: true,
         },
         listingId: {
+            type: String,
+            required: true,
+        },
+        buyerName: {
             type: String,
             required: true,
         },
