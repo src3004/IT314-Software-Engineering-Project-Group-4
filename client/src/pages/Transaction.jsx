@@ -3,6 +3,8 @@ import Confetti from "react-confetti";
 import { useParams } from "react-router-dom";
 
 const Transaction = () => {
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [transactionId, setTransactionId] = useState(null);
@@ -15,7 +17,40 @@ const Transaction = () => {
   const [seller, setSeller] = useState(null);
   const [sellerError, setSellerError] = useState(false);
   const [sellerLoading, setSellerLoading] = useState(true);
+  const [transactionError, setTransactionError] = useState(false);
+  const [transactionLoading, setTransactionLoading] = useState(true);
   const params = useParams();
+
+  useEffect(() => {
+    const fetchTransaction = async() => {
+      try {
+        setTransactionError(false);
+        setTransactionLoading(true);
+        const res = await fetch(`/api/transaction/get/${params.buyerId}/${params.listingId}`);
+        if (res.success === false)
+        {
+          setTransactionError(true);
+          setTransactionLoading(false);
+          return;
+        }
+        setTransactionError(false);
+        setTransactionLoading(false);
+        console.log(res);
+        if (res.status !== 204)
+        {
+          const data = await res.json();
+          setIsPaid(true);
+          setTransactionId(data.transactionId);
+        }
+      } catch(error) {
+        setTransactionError(true);
+        setTransactionLoading(false);
+      }
+    };
+  
+    fetchTransaction();
+  }, [params.buyerId]);
+
   useEffect(() => {
   const fetchListing = async() => {
     try {
@@ -99,7 +134,34 @@ useEffect(() => {
       name: "ReaL Estate",
       description: "Token Payment",
       image: "", // Optional logo URL
-      handler: function (response) {
+      handler: async function (response) {
+        try {
+          setLoading(true);
+          setError(false);
+          const res = await fetch('/api/transaction/create', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              transactionId: response.razorpay_payment_id,
+              userId: params.buyerId,
+              listingId: params.listingId,
+              name: listing.name,
+              image: listing.imageUrls[0],
+              tokenAmount: listing.tokenAmount
+            }),
+          });
+          const data = await res.json();
+          setLoading(false);
+          if (data.success === false)
+          {
+            setError(data.message);
+          }
+        } catch (error) {
+          setError(error.message);
+          setLoading(false);
+        };
         setTransactionId(response.razorpay_payment_id);
         setIsPaid(true);
         setShowConfetti(true); // Start confetti animation
@@ -182,9 +244,9 @@ useEffect(() => {
 
   return (
     <main>
-    {(listingLoading || buyerLoading || sellerLoading) && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Loading...</p>}
-    {(listingError || buyerError || sellerError) && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Something went Wrong!</p>}
-    {listing && buyer && seller && !listingLoading && !buyerLoading && !sellerLoading && !listingError && !buyerError && !sellerError && (
+    {(listingLoading || buyerLoading || sellerLoading || transactionLoading) && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Loading...</p>}
+    {(listingError || buyerError || sellerError || transactionError) && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Something went Wrong!</p>}
+    {listing && buyer && seller && !listingLoading && !buyerLoading && !sellerLoading && !transactionLoading && !listingError && !buyerError && !sellerError && !transactionError && (
       <div>
       {showConfetti && <Confetti numberOfPieces={200} />}
     <div style={styles.container}>
@@ -216,9 +278,10 @@ useEffect(() => {
           onClick={handlePayment}
           disabled={isPaid}
         >
-          {isPaid ? "Paid" : "Pay Now"}
+          {loading ? "Paying..." : (isPaid ? "Paid" : "Pay Now")}
         </button>
-        {transactionId && <p className='text-green-700 font-semibold'>Transaction ID: {transactionId}</p>}
+        {error && <p className="text-red-700 text-center">{error}</p>}
+        {!error && transactionId && <p className='text-green-700 font-semibold'>Transaction ID: {transactionId}</p>}
       </div>
       </div>
     </div>

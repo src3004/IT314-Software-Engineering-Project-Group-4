@@ -374,6 +374,7 @@ const Listing = () => {
                 <p style={styles.address}>{listing.address}</p>
               </div>
             </div>
+            {(currentUser && (listing.userRef !== currentUser._id)) ? (
             <button
               onClick={() => setIsWishlisted(!isWishlisted)}
               style={styles.wishlistButton}
@@ -384,7 +385,20 @@ const Listing = () => {
                 size={20}
                 />
               {isWishlisted ? 'Wishlisted' : 'Add to Wishlist'}
-            </button>
+            </button>): (!currentUser)? (
+                <button
+                onClick={handleLogin}
+                style={styles.wishlistButton}
+              >
+                <Heart
+                  color={isWishlisted ? 'white' : '#16a34a'}
+                  fill={isWishlisted ? 'white' : 'none'}
+                  size={20}
+                  />
+                {isWishlisted ? 'Wishlisted' : 'Add to Wishlist'}
+              </button>):(
+                <div></div>
+              )}
           </div>
 
 
@@ -487,6 +501,7 @@ const Listing = () => {
           </form>
           <div>
           <h2 style={styles.descriptionTitle}>Pay Token Amount</h2>
+          <p className='font-semibold text-xl mb-6'>Token Amount: ₹ {listing.tokenAmount}</p>
           <Link to={`/transaction/${currentUser._id}/${listing.userRef}/${listing._id}`}
             className='btn bg-green-600 p-2 text-md text-white font-semibold rounded-md mb-3'>
             Pay Token Amount

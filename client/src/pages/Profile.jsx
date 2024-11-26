@@ -206,7 +206,7 @@ export default function Profile() {
                     type="number"
                     id="mobile"
                     placeholder="Add Mobile Number"
-                    defaultValue={currentUser.mobile}
+                    defaultValue={((currentUser.mobile==='9999999999')?(''):(currentUser.mobile))}
                     onChange={handleChange}
                     disabled={!isEditable}
                     className={`w-full rounded-md p-2 focus:outline-none focus:ring-2 ${

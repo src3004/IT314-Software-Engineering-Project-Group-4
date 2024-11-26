@@ -23,6 +23,7 @@ const CreateListing = () => {
     garden: false,
     type: 'sale',
     imageUrls: [],
+    tokenAmount: 5000,
     visitSlots: [],
   });
   const [imageUploadError, setImageUploadError] = useState(false);
@@ -287,8 +288,20 @@ const CreateListing = () => {
               onChange={handleChange}
               value={formData.price}
             />
-            <label>Regular Price (in {formData.type==='sale' ? '₹' : '₹/month'})</label>
+            <label>Price (in {formData.type==='sale' ? '₹' : '₹/month'})</label>
           </div>
+            <div className="price-input">
+              <input
+                type="number"
+                id="tokenAmount"
+                min="5000"
+                max="1000000"
+                required
+                onChange={handleChange}
+                value={formData.tokenAmount}
+              />
+              <label>Token Amount (in ₹)</label>
+            </div>
             </div>
             <div className={`second`}>
             <div className="file-upload flex flex-col">
