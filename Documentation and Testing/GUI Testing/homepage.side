@@ -1,0 +1,251 @@
+{
+  "id": "c7043fd1-c5ba-4f7c-a2a1-cfa44d8fefa5",
+  "version": "2.0",
+  "name": "Real Estate",
+  "url": "https://estatereal-mf2n.onrender.com/",
+  "tests": [{
+    "id": "31f58b8e-d584-4da8-9a28-90d0cf0aebef",
+    "name": "homepage",
+    "commands": [{
+      "id": "f12d593e-b630-4453-b63f-a69322f93403",
+      "comment": "",
+      "command": "open",
+      "target": "https://estatereal-mf2n.onrender.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c98e15a5-5fe4-4a84-89eb-faa4f85640d3",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9322285a-7ecc-4e42-a9a6-1a1f05d6a136",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About Us",
+      "targets": [
+        ["linkText=About Us", "linkText"],
+        ["css=.text-md", "css:finder"],
+        ["xpath=//a[contains(text(),'About Us')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/about-us')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'About Us')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "63cc4ad3-ae72-47d3-82c4-bf3cf7f8b967",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.text-slate-200",
+      "targets": [
+        ["css=.text-slate-200", "css:finder"],
+        ["xpath=//div[@id='root']/nav/div/div/a/h1/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Estate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9dd8f296-35c4-4423-9ad5-69aae842901d",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.text-slate-200",
+      "targets": [
+        ["css=.text-slate-200", "css:finder"],
+        ["xpath=//div[@id='root']/nav/div/div/a/h1/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Estate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6db728eb-d641-4376-a5b2-d6349030ab33",
+      "comment": "",
+      "command": "click",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a1cdc82-1a52-4589-984b-6774d412f19e",
+      "comment": "",
+      "command": "type",
+      "target": "css=input",
+      "targets": [
+        ["css=input", "css:finder"],
+        ["xpath=//input[@value='ahmedabad']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "ahmedabad"
+    }, {
+      "id": "64ff7103-4f9b-4722-9ebf-e80fbf722ee5",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(4) .rounded-md",
+      "targets": [
+        ["css=div:nth-child(4) .rounded-md", "css:finder"],
+        ["xpath=(//a[contains(text(),'View Details')])[4]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/div[4]/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/listing/67425c42c13d06f7bd2135fe')])[2]", "xpath:href"],
+        ["xpath=//div[4]/div/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d742faa-afea-4be6-8223-a64c9df5c45c",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "007666f5-ed0d-4f61-a0ae-88364097a47f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.text-slate-200",
+      "targets": [
+        ["css=.text-slate-200", "css:finder"],
+        ["xpath=//div[@id='root']/nav/div/div/a/h1/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Estate')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "34c5cb51-bdb7-4496-8ddb-9f0e707d4c77",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b18a3028-b2b8-456a-b212-10d32149d2b8",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5edfecb-f4a7-4cd3-b584-1871b9897559",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=button:nth-child(3)",
+      "targets": [
+        ["css=button:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb28b872-6c0b-4153-a07c-945781e24d10",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > div:nth-child(3) > input",
+      "targets": [
+        ["css=div:nth-child(1) > div:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@type='number']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fdb0564b-bbfe-400a-a077-5a20f5c4dc85",
+      "comment": "",
+      "command": "type",
+      "target": "css=div:nth-child(1) > div:nth-child(3) > input",
+      "targets": [
+        ["css=div:nth-child(1) > div:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@type='number']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "15000"
+    }, {
+      "id": "5a5c8176-ac73-4868-943b-9c5ee161f3ed",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(5) > .gap-x-2:nth-child(2)",
+      "targets": [
+        ["css=div:nth-child(5) > .gap-x-2:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0abd0ac3-8303-4a0a-b340-2c69035d6f6c",
+      "comment": "",
+      "command": "click",
+      "target": "name=apartments",
+      "targets": [
+        ["name=apartments", "name"],
+        ["css=div:nth-child(5) > .gap-x-2:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='apartments']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e28b4b9e-e986-4dcb-aa2a-2799b9977610",
+      "comment": "",
+      "command": "click",
+      "target": "name=type",
+      "targets": [
+        ["name=type", "name"],
+        ["css=div:nth-child(6) > .gap-x-2:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='type']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e353f57-32a2-4797-9528-b44a9a4e6e92",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(7) > .gap-x-2:nth-child(3) > input",
+      "targets": [
+        ["css=div:nth-child(7) > .gap-x-2:nth-child(3) > input", "css:finder"],
+        ["xpath=(//input[@name='bedrooms'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[4]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ab7f298-5644-41ff-b1da-cab0edf57bfe",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(8) > .rounded-md",
+      "targets": [
+        ["css=div:nth-child(8) > .rounded-md", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Apply Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5c1c0980-9e37-4f00-a47e-28b0364f8bbb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
