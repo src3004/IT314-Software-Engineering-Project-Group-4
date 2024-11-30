@@ -1,0 +1,178 @@
+{
+  "id": "d5117d4c-3008-4a81-94ef-ebef47d6cd78",
+  "version": "2.0",
+  "name": "profile",
+  "url": "https://estatereal-mf2n.onrender.com/",
+  "tests": [{
+    "id": "f87f7b49-076e-4bde-8f44-0612469ac3d6",
+    "name": "Profile",
+    "commands": [{
+      "id": "26532396-6019-45d8-8261-34ee950fb4a5",
+      "comment": "",
+      "command": "open",
+      "target": "https://estatereal-mf2n.onrender.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce495878-6639-48f1-a0f7-7c8747d1bc8d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "321e1fb7-3aa1-4e55-8b8c-5e98a4142840",
+      "comment": "",
+      "command": "click",
+      "target": "css=.rounded-full",
+      "targets": [
+        ["css=.rounded-full", "css:finder"],
+        ["xpath=//img[@alt='profile']", "xpath:img"],
+        ["xpath=//div[@id='root']/nav/div/ul/a/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6e785a6-57aa-4cb0-b959-08732a516d00",
+      "comment": "",
+      "command": "click",
+      "target": "css=.transition-all",
+      "targets": [
+        ["css=.transition-all", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Change Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "73396910-a569-4853-ac4b-5729ddbe2e26",
+      "comment": "",
+      "command": "click",
+      "target": "id=mobile",
+      "targets": [
+        ["id=mobile", "id"],
+        ["css=#mobile", "css:finder"],
+        ["xpath=//input[@id='mobile']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de765f70-b9cd-4584-a5e1-2836f8f29c86",
+      "comment": "",
+      "command": "type",
+      "target": "id=mobile",
+      "targets": [
+        ["id=mobile", "id"],
+        ["css=#mobile", "css:finder"],
+        ["xpath=//input[@id='mobile']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "9426311639"
+    }, {
+      "id": "dcb3df29-531c-42ad-950b-f092049e17b9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.px-6:nth-child(1)",
+      "targets": [
+        ["css=.px-6:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save Changes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "195b347b-e3a3-47ba-ba6b-18d3344d61a9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Add Property",
+      "targets": [
+        ["linkText=Add Property", "linkText"],
+        ["css=.bg-green-600:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Add Property')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/form/div[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/create-listing')]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Add Property')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0d5e610f-1193-4347-a72c-f1538edd4291",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-red-700:nth-child(2)",
+      "targets": [
+        ["css=.text-red-700:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/span[2]", "xpath:idRelative"],
+        ["xpath=//div/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Sign out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2009fcd-00e5-48d3-89fa-7cc63280081a",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "pateljeet3004@gmail.com"
+    }, {
+      "id": "3a67d6bf-5af3-40f3-9446-6357e6e27e96",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "#Jeet@3004"
+    }, {
+      "id": "f0b8327e-a890-40c2-b7bb-b03d6fb99c78",
+      "comment": "",
+      "command": "type",
+      "target": "id=email2",
+      "targets": [
+        ["id=email2", "id"],
+        ["css=#email2", "css:finder"],
+        ["xpath=//input[@id='email2']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[2]/form/input", "xpath:position"]
+      ],
+      "value": "pateljeet3004@gmail.com"
+    }, {
+      "id": "bfbc3bc7-24a4-469d-be16-f3f256b936ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=password2",
+      "targets": [
+        ["id=password2", "id"],
+        ["css=#password2", "css:finder"],
+        ["xpath=//input[@id='password2']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": "#Jeet@3004"
+    }]
+  }],
+  "suites": [{
+    "id": "bab8bf63-4a91-4d15-87cf-94bf0c8f289e",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
