@@ -175,6 +175,11 @@ useEffect(() => {
       theme: {
         color: "#16a34a",
       },
+      modal:{
+        ondismiss: function (){
+          window.location.href = `/transaction/${params.buyerId}/${params.listingId}`;
+        }
+      },
     };
     const rzp = new window.Razorpay(options);
     rzp.open();
