@@ -36,6 +36,13 @@ export default function Profile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (e.target.mobile.value<1000000000 || e.target.mobile.value>9999999999)
+    {
+      dispatch(updateUserFailure('Mobile number must be of 10 digits!'));
+      return;
+    }
+    
     try {
       dispatch(updateUserStart());
       const res = await fetch(`api/user/update/${currentUser._id}`, {
@@ -205,8 +212,6 @@ export default function Profile() {
                   <input
                     type="number"
                     id="mobile"
-                    min='1000000000'
-                    max='9999999999'
                     placeholder="Add Mobile Number"
                     defaultValue={((currentUser.mobile==='9999999999')?(''):(currentUser.mobile))}
                     onChange={handleChange}
