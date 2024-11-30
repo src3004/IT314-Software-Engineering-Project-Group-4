@@ -309,7 +309,7 @@ const Listing = () => {
       if (response.ok) {
         setBookSlotLoading(false);
         alert("Slot booked successfully!");
-        setFormData({ buyerId: currentUser._id, sellerId: listing.userRef, buyerName: currentUser.username, buyerContact: currentUser.mobile, sellerContact: listing.contact, listingId: params.listingId, date: "", visitSlot: "", type: "pending" });
+        setFormData({ buyerId: currentUser._id, sellerId: listing.userRef, buyerName: currentUser.username, buyerContact: currentUser.mobile, sellerContact: listing.contact, listingId: params.listingId, date: "", visitSlot: "", status: "pending" });
       } else {
         setBookSlotLoading(false);
         setBookSlotError(result.message || "An error occurred while booking the slot.");
