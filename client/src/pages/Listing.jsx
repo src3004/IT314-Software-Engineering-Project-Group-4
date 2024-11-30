@@ -389,7 +389,7 @@ const Listing = () => {
                 fill={isWishlisted ? 'white' : 'none'}
                 size={20}
                 />
-              {isWishlisted ? 'Wishlisted' : 'Add to Wishlist'}
+              {isWishlisted ? 'Favorited' : 'Add to Favourite'}
             </button>): (!currentUser)? (
                 <button
                 onClick={handleLogin}
@@ -400,7 +400,7 @@ const Listing = () => {
                   fill={isWishlisted ? 'white' : 'none'}
                   size={20}
                   />
-                {isWishlisted ? 'Wishlisted' : 'Add to Wishlist'}
+                {isWishlisted ? 'Favorited' : 'Add to Favourite'}
               </button>):(
                 <div></div>
               )}

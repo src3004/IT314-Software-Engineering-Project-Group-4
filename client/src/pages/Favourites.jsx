@@ -11,42 +11,42 @@ const Favourites = () => {
   const properties = [
     {
       name: "Modern Family Home",
-      price: "$500000",
+      price: "500000",
       location: "Gandhinagar",
       bedrooms: 3,
       parking: false,
     },
     {
       name: "Parshwa Luxuria",
-      price: "$700000",
+      price: "700000",
       location: "Rajkot",
       bedrooms: 2,
       parking: false,
     },
     {
       name: "Maitri Elevate",
-      price: "$600000",
+      price: "600000",
       location: "Ahmedabad",
       bedrooms: 1,
       parking: true,
     },
     {
       name: "Aadhya Arambh",
-      price: "$550000",
+      price: "550000",
       location: "Anand",
       bedrooms: 3,
       parking: true,
     },
     {
       name: "Venus Deshna",
-      price: "$600000",
+      price: "600000",
       location: "Surat",
       bedrooms: 3,
       parking: false,
     },
     {
       name: "The Sovereign",
-      price: "$575000",
+      price: "575000",
       location: "Jamnagar",
       bedrooms: 4,
       parking: true,
@@ -66,7 +66,11 @@ const Favourites = () => {
               }}
             ></div>
             <h3>{property.name}</h3>
-            <p className="price">{property.price}</p>
+            <div className='flex justify-center gap-12'>
+              <p className="price">₹ {property.price}</p>
+              <p className='price'>For {((property.type)=='sale'?'Sale':'Rent')}</p>
+            </div>
+            {/* <p className="price">{property.price}</p> */}
             <div className="location details">
               <span>
                 <img

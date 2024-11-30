@@ -166,13 +166,14 @@ export default function Profile() {
             <tbody>
               <tr className="border-b">
                 <td className="py-2 px-4 font-medium text-green-700">
-                  Username:
+                  Name:
                 </td>
                 <td className="py-2 px-4">
                   <input
                     type="text"
                     id="username"
-                    placeholder="Username"
+                    maxLength="30"
+                    placeholder="Name"
                     defaultValue={currentUser.username}
                     onChange={handleChange}
                     disabled={!isEditable}

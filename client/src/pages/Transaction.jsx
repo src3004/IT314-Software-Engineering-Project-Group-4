@@ -35,7 +35,7 @@ const Transaction = () => {
         }
         setTransactionError(false);
         setTransactionLoading(false);
-        console.log(res);
+
         if (res.status !== 204)
         {
           const data = await res.json();
@@ -174,11 +174,6 @@ useEffect(() => {
       },
       theme: {
         color: "#16a34a",
-      },
-      modal:{
-        ondismiss: function (){
-          window.location.href = `/transaction/${params.buyerId}/${params.listingId}`;
-        }
       },
     };
     const rzp = new window.Razorpay(options);

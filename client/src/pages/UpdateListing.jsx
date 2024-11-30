@@ -144,6 +144,11 @@ const CreateListing = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.pinCode.value<100000 || e.target.pinCode.value>999999)
+    {
+      setError('Pin-Code must be of 6 digits!');
+      return;
+    }
     if (formData.imageUrls.length === 0)
     {
       setError('Please select one or more images.');
@@ -228,8 +233,6 @@ const CreateListing = () => {
             type='number'
             placeholder="Pin-Code"
             id = 'pinCode'
-            min='100000'
-            max='999999'
             required
             onChange={handleChange}
             value={formData.pinCode}
@@ -300,7 +303,7 @@ const CreateListing = () => {
               onChange={handleChange}
               value={formData.bedrooms}
             />
-            <label>Beds</label>
+            <label>BHK</label>
           </div>
           <div className="price-input">
             <input

@@ -12,6 +12,7 @@ import UpdateListing from './pages/UpdateListing'
 import Listing from './pages/Listing'
 import BookedSlots from './pages/VisitSlots'
 import PendingVisitors from './pages/PendingVisitors'
+import Favourites from './pages/Favourites'
 
 export default function App() {
   return <BrowserRouter>
@@ -27,6 +28,7 @@ export default function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/create-listing" element={<CreateListing />} />
       <Route path="/my-listings" element={<MyListings />} />
+      <Route path="/favourites" element={<Favourites />} />
       <Route path="/visit-slots" element={<BookedSlots />} />
       <Route path="/pending-visitors" element={<PendingVisitors />} />
       <Route path="/update-listing/:listingId" element={<UpdateListing />} />

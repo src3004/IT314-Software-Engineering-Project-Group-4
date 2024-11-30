@@ -67,7 +67,7 @@ export default function MyListings() {
       }
       <div className="properties-grid">
         {userListings && userListings.length>0 &&
-          userListings.map((listing) => (
+          userListings.slice().reverse().map((listing) => (
             <div key={listing._id} className="property-card">
             <Link to={`/listing/${listing._id}`}>
             <div
@@ -78,7 +78,10 @@ export default function MyListings() {
               ></div>
               </Link>
             <Link to={`/listing/${listing._id}`}><h3 className='font-semibold'>{listing.name}</h3></Link>
-            <p className="price">₹ {listing.price}</p>
+            <div className='flex justify-center gap-12'>
+              <p className="price">₹ {listing.price}</p>
+              <p className='price'>For {((listing.type)=='sale'?'Sale':'Rent')}</p>
+            </div>
              <div className="location details">
               <span>
                 <img

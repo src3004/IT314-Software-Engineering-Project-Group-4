@@ -111,7 +111,7 @@ export default function Login() {
           <h1>Real Estate</h1>
           <br />
           <h2>Create Account</h2>
-          <input type="text" placeholder="Username" required id='username' onChange={handleChange}/>
+          <input type="text" placeholder="Name" required id='username' maxLength='30' onChange={handleChange}/>
           <input type="text" placeholder="Email" required id='email' onChange={handleChange}/>
           <input type="password" placeholder="Password" required id='password' onChange={handleChange}/>
           <button disabled={loading} style={{width: 280, fontSize: 14,}}>{loading ? 'Loading...' : 'Sign Up'}</button>
