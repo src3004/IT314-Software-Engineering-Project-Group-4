@@ -1,0 +1,109 @@
+{
+  "id": "c1f8b870-e6bc-42cf-b922-c01553090315",
+  "version": "2.0",
+  "name": "Real Estate",
+  "url": "https://estatereal-mf2n.onrender.com/",
+  "tests": [{
+    "id": "1a9d44bb-eeca-4823-b182-a541d29b10dd",
+    "name": "homepage-login",
+    "commands": [{
+      "id": "838b9c30-2f68-4cbb-8c87-9b28c3f778cb",
+      "comment": "",
+      "command": "open",
+      "target": "https://estatereal-mf2n.onrender.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cf2223e5-2954-464d-b94c-1051500b156d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1590e863-2e4a-480f-b1a2-65aaa8fc695d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bg-green-500",
+      "targets": [
+        ["css=.bg-green-500", "css:finder"],
+        ["xpath=//div[@id='root']/nav/div/ul/a/li/div", "xpath:idRelative"],
+        ["xpath=//li/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "387b8a08-d897-49de-99fd-4b7003d38e9b",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "pateljeet3004@gmail.com"
+    }, {
+      "id": "3732871d-3c39-4dfc-9083-7d08c9aea2ae",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "#Jeet@3004"
+    }, {
+      "id": "dc06363f-1053-4613-a103-55a05e263f18",
+      "comment": "",
+      "command": "type",
+      "target": "id=email2",
+      "targets": [
+        ["id=email2", "id"],
+        ["css=#email2", "css:finder"],
+        ["xpath=//input[@id='email2']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[2]/form/input", "xpath:position"]
+      ],
+      "value": "pateljeet3004@gmail.com"
+    }, {
+      "id": "48c91e22-fc6f-4644-8fd4-ddca80bd7da9",
+      "comment": "",
+      "command": "type",
+      "target": "id=password2",
+      "targets": [
+        ["id=password2", "id"],
+        ["css=#password2", "css:finder"],
+        ["xpath=//input[@id='password2']", "xpath:attributes"],
+        ["xpath=//div[@id='container']/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": "#Jeet@3004"
+    }, {
+      "id": "47917465-cc8a-4de8-a1d1-824b7886e381",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(7)",
+      "targets": [
+        ["css=button:nth-child(7)", "css:finder"],
+        ["xpath=//div[@id='container']/div[2]/form/button", "xpath:idRelative"],
+        ["xpath=//div[2]/form/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8a7c3ded-d824-40cf-84e4-0cbd6cb5ad09",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
