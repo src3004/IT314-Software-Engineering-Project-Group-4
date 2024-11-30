@@ -1,0 +1,135 @@
+{
+  "id": "f72210a4-5840-48b7-815e-b54ea2314046",
+  "version": "2.0",
+  "name": "My property",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "0ec5c840-4ee4-4ea3-afe8-7296ff86c4b3",
+    "name": "My property",
+    "commands": [{
+      "id": "5a40117a-d1a2-47a3-b973-d08eb0114667",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f3f80fb3-2240-496a-9a28-7a56d77abbbf",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b0c6494a-7c4b-4e9b-b9d4-056f77162731",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=My Properties",
+      "targets": [
+        ["linkText=My Properties", "linkText"],
+        ["css=li:nth-child(4) > .className\\=\\\"text-white", "css:finder"],
+        ["xpath=//a[contains(text(),'My Properties')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/my-listings')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Properties')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4874f6d-487e-440a-abbf-c04443e429f9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.property-image",
+      "targets": [
+        ["css=.property-image", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2cb6b464-4f05-4de6-a218-959c4fdedc77",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=.edit-btn", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/update-listing/67473b6453f96cee6871b4f1')]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "af24cd5b-de82-483b-b15d-b7adb4c6ac7f",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=.edit-btn", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/update-listing/67473b6453f96cee6871b4f1')]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0fbae7d3-128e-43b7-b8eb-bccc736f236e",
+      "comment": "",
+      "command": "click",
+      "target": "id=pinCode",
+      "targets": [
+        ["id=pinCode", "id"],
+        ["css=#pinCode", "css:finder"],
+        ["xpath=//input[@id='pinCode']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb9ecced-a478-48fd-9d40-99b387d4fc4d",
+      "comment": "",
+      "command": "type",
+      "target": "id=pinCode",
+      "targets": [
+        ["id=pinCode", "id"],
+        ["css=#pinCode", "css:finder"],
+        ["xpath=//input[@id='pinCode']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "364005"
+    }, {
+      "id": "c9bbd418-ec53-4128-a2a7-0f9f23ce6ef5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-button",
+      "targets": [
+        ["css=.submit-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Update Property')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "03e171da-88fe-4529-a959-1f9852e08bdb",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2cad2dc8-1f81-4d2b-8e39-82e49f4361a5",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
