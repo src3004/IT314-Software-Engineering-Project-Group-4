@@ -1,0 +1,210 @@
+{
+  "id": "555abc10-fe99-464d-9c6b-367a91a08f76",
+  "version": "2.0",
+  "name": "Property Detail",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "58e90248-69bb-4b32-8dc7-d9a37031b83b",
+    "name": "property detail",
+    "commands": [{
+      "id": "e2db6287-4a70-42f4-b38f-eed390e38cfa",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c2b7598f-5bd9-499e-83f5-a8078ffa9a63",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c54a832c-5e8f-4b13-ad6f-4895ca0232af",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Details",
+      "targets": [
+        ["linkText=View Details", "linkText"],
+        ["css=div:nth-child(1) > div > div > .rounded-md", "css:finder"],
+        ["xpath=//a[contains(text(),'View Details')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/listing/673f36fe2e4f182c4faacc29')])[2]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee8678b1-a441-4666-9e46-431db8d12cc7",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "90f0e5dd-f4cf-4b90-b0a1-29b2ca41d9a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(2)",
+      "targets": [
+        ["css=button:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add to Wishlist')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b40021b0-8e59-467d-b120-664de3d23b62",
+      "comment": "",
+      "command": "click",
+      "target": "id=date",
+      "targets": [
+        ["id=date", "id"],
+        ["css=#date", "css:finder"],
+        ["xpath=//select[@id='date']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9a3d743-2aed-42cf-aebb-433b4f7683e8",
+      "comment": "",
+      "command": "select",
+      "target": "id=date",
+      "targets": [],
+      "value": "label=28/11/2024"
+    }, {
+      "id": "f3662abb-ca06-4fc9-9b77-ae87b14db858",
+      "comment": "",
+      "command": "click",
+      "target": "id=visitSlot",
+      "targets": [
+        ["id=visitSlot", "id"],
+        ["css=#visitSlot", "css:finder"],
+        ["xpath=//select[@id='visitSlot']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a54e502-b330-440d-9b87-82b7ba53c2ff",
+      "comment": "",
+      "command": "select",
+      "target": "id=visitSlot",
+      "targets": [],
+      "value": "label=11:00 AM - 12:00 PM"
+    }, {
+      "id": "a5931f87-6734-461b-8d4f-abb424df5e5b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(4)",
+      "targets": [
+        ["css=.btn:nth-child(4)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/button", "xpath:idRelative"],
+        ["xpath=//form/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Book Visit Slot')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9e0c08a-3690-47df-bf65-88797ee4c42c",
+      "comment": "",
+      "command": "click",
+      "target": "id=visitSlot",
+      "targets": [
+        ["id=visitSlot", "id"],
+        ["css=#visitSlot", "css:finder"],
+        ["xpath=//select[@id='visitSlot']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d44ac8b5-cd43-4649-959c-9c15b49b24f1",
+      "comment": "",
+      "command": "select",
+      "target": "id=visitSlot",
+      "targets": [],
+      "value": "label=7:00 AM - 8:00 AM"
+    }, {
+      "id": "5777b207-49ea-45ba-94ea-91799951c04d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(4)",
+      "targets": [
+        ["css=.btn:nth-child(4)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/button", "xpath:idRelative"],
+        ["xpath=//form/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Book Visit Slot')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5945ad6e-0264-44ae-b1e6-21744d43903e",
+      "comment": "",
+      "command": "click",
+      "target": "id=date",
+      "targets": [
+        ["id=date", "id"],
+        ["css=#date", "css:finder"],
+        ["xpath=//select[@id='date']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b41ff11a-215b-4dc0-bfc9-3285687ff2b7",
+      "comment": "",
+      "command": "select",
+      "target": "id=date",
+      "targets": [],
+      "value": "label=02/12/2024"
+    }, {
+      "id": "0716b5aa-244a-48a0-bad4-61393670530c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(4)",
+      "targets": [
+        ["css=.btn:nth-child(4)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/button", "xpath:idRelative"],
+        ["xpath=//form/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Book Visit Slot')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f0fcefe8-0735-475e-adad-7518e30248af",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pay Token Amount",
+      "targets": [
+        ["linkText=Pay Token Amount", "linkText"],
+        ["css=.btn:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Pay Token Amount')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/transaction/6745f4ebf4556dbe51f862e8/673f36122e4f182c4faacc24/673f36fe2e4f182c4faacc29')]", "xpath:href"],
+        ["xpath=//div[4]/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Pay Token Amount')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f364c227-9e17-436a-a67c-6cd6f143beb6",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "bd480bdc-b6c7-4809-b22e-7eaa2e92eeaa",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["58e90248-69bb-4b32-8dc7-d9a37031b83b"]
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}

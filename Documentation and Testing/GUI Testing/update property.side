@@ -1,0 +1,188 @@
+{
+  "id": "979c7da4-8ae6-4ae4-8c59-9d50d38bcc11",
+  "version": "2.0",
+  "name": "update property",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "f40d7f9b-5754-45f2-8b83-a52ce115508d",
+    "name": "Update Property",
+    "commands": [{
+      "id": "b8ecfb6f-4f01-48a6-a2df-bbc2c7e8658c",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0213e9c3-77c2-40d1-8d7d-983d2115f64d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5d795b2b-29e6-40fd-bc10-79848ed605ea",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=My Properties",
+      "targets": [
+        ["linkText=My Properties", "linkText"],
+        ["css=li:nth-child(4) > .className\\=\\\"text-white", "css:finder"],
+        ["xpath=//a[contains(text(),'My Properties')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/my-listings')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Properties')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0d3195b-1fa5-4ef5-b646-e9c4a25c24c5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [
+        ["linkText=Edit", "linkText"],
+        ["css=.edit-btn", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/update-listing/67473b6453f96cee6871b4f1')]", "xpath:href"],
+        ["xpath=//div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "be94b1f1-dc25-480e-b66e-b53db4de8986",
+      "comment": "",
+      "command": "click",
+      "target": "id=pinCode",
+      "targets": [
+        ["id=pinCode", "id"],
+        ["css=#pinCode", "css:finder"],
+        ["xpath=//input[@id='pinCode']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8c220eba-5de5-4a29-ac93-2ccd84f00d72",
+      "comment": "",
+      "command": "type",
+      "target": "id=pinCode",
+      "targets": [
+        ["id=pinCode", "id"],
+        ["css=#pinCode", "css:finder"],
+        ["xpath=//input[@id='pinCode']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": "364012"
+    }, {
+      "id": "35f330ca-f19e-488b-9509-0e8937fb4db2",
+      "comment": "",
+      "command": "click",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ce12e1f-d0ef-4f25-8818-9c7302eeb051",
+      "comment": "",
+      "command": "click",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a5f76f4-57d7-4914-a438-52b5306ca9df",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f94c7f85-3891-44b6-a44c-030c9f3f87de",
+      "comment": "",
+      "command": "click",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aba58e69-5ff8-4fe7-b555-318013048eea",
+      "comment": "",
+      "command": "type",
+      "target": "id=city",
+      "targets": [
+        ["id=city", "id"],
+        ["css=#city", "css:finder"],
+        ["xpath=//input[@id='city']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "Bhavnagar"
+    }, {
+      "id": "9e2ec41d-f1ee-49f8-87b3-71ae2fe0877d",
+      "comment": "",
+      "command": "addSelection",
+      "target": "id=visitSlots",
+      "targets": [
+        ["id=visitSlots", "id"],
+        ["css=#visitSlots", "css:finder"],
+        ["xpath=//select[@id='visitSlots']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div[2]/div[3]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "label=2:00 PM - 3:00 PM"
+    }, {
+      "id": "b53fd0de-f913-40a0-85ac-d62c811339bf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit-button",
+      "targets": [
+        ["css=.submit-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/main/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//form/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Update Property')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7fc1ef12-425e-4875-be0c-16f1fe844944",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c8ed6ae7-0937-4ecb-8c66-64f4492d49d2",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f40d7f9b-5754-45f2-8b83-a52ce115508d"]
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
