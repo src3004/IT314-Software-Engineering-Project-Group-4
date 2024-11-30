@@ -1,0 +1,128 @@
+{
+  "id": "ab9a9f7e-f343-4a6a-a3b7-cffcba45d4b3",
+  "version": "2.0",
+  "name": "About us",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "1297bd88-18f7-4cf2-8286-0a00a52fa448",
+    "name": "About us",
+    "commands": [{
+      "id": "4fbed863-96c0-48ec-a856-03448e3d0960",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "af4122de-b660-48fa-8ccf-bdaef73e17a2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9747897b-c559-4342-90a3-14833d48ef07",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=About Us",
+      "targets": [
+        ["linkText=About Us", "linkText"],
+        ["css=li > .text-white", "css:finder"],
+        ["xpath=//a[contains(text(),'About Us')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/about-us')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'About Us')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "740e62f2-a8d8-4728-84a8-cbba1e5bc849",
+      "comment": "",
+      "command": "click",
+      "target": "css=.team-card:nth-child(8) .github",
+      "targets": [
+        ["css=.team-card:nth-child(8) .github", "css:finder"],
+        ["xpath=(//a[contains(text(),'GitHub')])[8]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div[8]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://github.com/jeet30042005')]", "xpath:href"],
+        ["xpath=//div[8]/div/a", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win6144",
+      "windowTimeout": 2000
+    }, {
+      "id": "51f033f1-7816-40fa-bd7b-f91b7430d048",
+      "comment": "",
+      "command": "storeWindowHandle",
+      "target": "root",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9e2b1263-31af-4238-8d1d-5760b0c96596",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win6144}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0b84acc5-b2b1-4d8d-ac0d-9dd878c73dcd",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=#projects-tab > span:nth-child(2)",
+      "targets": [
+        ["css=#projects-tab > span:nth-child(2)", "css:finder"],
+        ["xpath=//a[@id='projects-tab']/span", "xpath:idRelative"],
+        ["xpath=//nav/ul/li[3]/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "80efcd0b-917f-4009-b11d-f4675250636b",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${root}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "86fc747c-a2df-4cf4-8c8c-f35d95be9d5e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.team-card:nth-child(8) .linkedin",
+      "targets": [
+        ["css=.team-card:nth-child(8) .linkedin", "css:finder"],
+        ["xpath=(//a[contains(text(),'LinkedIn')])[8]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div[8]/div/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'https://www.linkedin.com/in/jeet-patel-750a95258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app')]", "xpath:href"],
+        ["xpath=//div[8]/div/a[2]", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win9617",
+      "windowTimeout": 2000
+    }, {
+      "id": "cd821b2a-d075-463d-8e32-909863c270f7",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win9617}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8be6de2e-f1c8-41f4-b2c9-6ce892017ad3",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${root}",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8e1feb4d-e4f9-433b-a8ba-278eb20f6998",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1297bd88-18f7-4cf2-8286-0a00a52fa448"]
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
