@@ -1,0 +1,116 @@
+/* Base styles for My Transactions */
+.transactions {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .transactions-title {
+    text-align: center;
+    color: #008000;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .transactions-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .transactions-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .transactions-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .transactions-image {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+  }
+  
+  .transactions-details {
+    flex: 1;
+  }
+  
+  .transactions-details h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 10px;
+  }
+  
+  .transactions-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .transactions-button {
+    background-color: #e6ffe6;
+    color: #2d572c;
+    border: 1px solid #2d572c;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* .transactions-button {
+    background-color: #ffe6e6;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+  } */
+  
+  /* .transactions-button:hover {
+    background-color: #008000;
+  } */
+  
+  .transactions-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .transactions-card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .transactions-image {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  
+    .transactions-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
