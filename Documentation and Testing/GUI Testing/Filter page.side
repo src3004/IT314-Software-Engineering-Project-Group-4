@@ -1,0 +1,191 @@
+{
+  "id": "09bc9a4c-6ec9-4e2f-91b1-2b4203fc91d3",
+  "version": "2.0",
+  "name": "Filter page",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "eee40ad4-7a74-4fab-a509-669dce232baa",
+    "name": "Filter page",
+    "commands": [{
+      "id": "959a025c-2796-4437-8149-26e7150120be",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b78c8904-6ad5-41fc-8522-79a7efce0512",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a0cb12e2-22df-4fa2-9a5d-03b699352e68",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c1c9b727-c0f9-4ec3-af3a-cdcf80a32445",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > div:nth-child(3) > input",
+      "targets": [
+        ["css=div:nth-child(1) > div:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@type='number']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7167237c-9649-4cfb-b168-6764a2f7744a",
+      "comment": "",
+      "command": "type",
+      "target": "css=div:nth-child(1) > div:nth-child(3) > input",
+      "targets": [
+        ["css=div:nth-child(1) > div:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@type='number']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "10000"
+    }, {
+      "id": "58d4b328-5bb3-4af6-9fae-8409a8ec437b",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(6) > .gap-x-2:nth-child(2)",
+      "targets": [
+        ["css=div:nth-child(6) > .gap-x-2:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[3]/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e4ce6db7-7eb6-4166-81f1-43963f982b80",
+      "comment": "",
+      "command": "click",
+      "target": "name=type",
+      "targets": [
+        ["name=type", "name"],
+        ["css=div:nth-child(6) > .gap-x-2:nth-child(2) > input", "css:finder"],
+        ["xpath=//input[@name='type']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ce8d578-2a82-4627-a79f-5667203e41bd",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(7) > .gap-x-2:nth-child(5) > input",
+      "targets": [
+        ["css=div:nth-child(7) > .gap-x-2:nth-child(5) > input", "css:finder"],
+        ["xpath=(//input[@name='bedrooms'])[4]", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div[4]/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18f8cb03-4a3d-4945-9c24-146ebe4e5135",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(8) > .rounded-md",
+      "targets": [
+        ["css=div:nth-child(8) > .rounded-md", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[5]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Apply Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f8ecb4c-d682-452c-992b-e35ce7d38f2a",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2ba06d47-c652-4f1d-85c6-f9953a90376c",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7a4a05c-4d52-4c90-8e4c-4bf2fb9b0087",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=button:nth-child(3)",
+      "targets": [
+        ["css=button:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Show Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8fba4328-c952-481e-a0e9-eff92fc19480",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(1) > div:nth-child(3) > input",
+      "targets": [
+        ["css=div:nth-child(1) > div:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@type='number']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "74194023-79e0-4f36-a7a2-b3209d01b29f",
+      "comment": "",
+      "command": "type",
+      "target": "css=div:nth-child(1) > div:nth-child(3) > input",
+      "targets": [
+        ["css=div:nth-child(1) > div:nth-child(3) > input", "css:finder"],
+        ["xpath=//input[@type='number']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "10000"
+    }, {
+      "id": "4043b061-4448-472f-a300-1d52db27e655",
+      "comment": "",
+      "command": "click",
+      "target": "css=div:nth-child(9) > .rounded-md",
+      "targets": [
+        ["css=div:nth-child(9) > .rounded-md", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[6]/button", "xpath:idRelative"],
+        ["xpath=//div[6]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Discard Filters')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "ff38bb69-7764-4312-98f9-84c90ff80800",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}

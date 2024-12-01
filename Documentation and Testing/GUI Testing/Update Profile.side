@@ -1,0 +1,177 @@
+{
+  "id": "82f4d80f-6571-4d2c-9e6c-79daf79c0229",
+  "version": "2.0",
+  "name": "Update Profile",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "c20bc964-d706-4111-88c2-874ba4ec0f86",
+    "name": "Update Profile",
+    "commands": [{
+      "id": "ef7c8fd9-8e35-427a-9496-5aedce30179b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8b3698ba-f5ca-4bac-ac92-a90f9b43c05e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "205d0d16-eee1-4407-8235-540c852cc59f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.rounded-full",
+      "targets": [
+        ["css=.rounded-full", "css:finder"],
+        ["xpath=//img[@alt='profile']", "xpath:img"],
+        ["xpath=//div[@id='root']/nav/div/ul/a/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c9b087f-83ba-4447-806e-9c949ae79754",
+      "comment": "",
+      "command": "click",
+      "target": "css=.transition-all",
+      "targets": [
+        ["css=.transition-all", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Change Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d8736e9-ff9a-4f0d-addf-1c9affdbac3e",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.transition-all",
+      "targets": [
+        ["css=.transition-all", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Change Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e884221d-1155-4535-ab15-b66115521ee9",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.bg-green-600:nth-child(2)",
+      "targets": [
+        ["css=.bg-green-600:nth-child(2)", "css:finder"],
+        ["xpath=//button[@type='button']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div[2]/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Cancel')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ebd600a-7826-42a1-9768-fa2945cbb967",
+      "comment": "",
+      "command": "click",
+      "target": "id=mobile",
+      "targets": [
+        ["id=mobile", "id"],
+        ["css=#mobile", "css:finder"],
+        ["xpath=//input[@id='mobile']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c48ce01c-12e0-4161-85f3-16707e245f15",
+      "comment": "",
+      "command": "type",
+      "target": "id=mobile",
+      "targets": [
+        ["id=mobile", "id"],
+        ["css=#mobile", "css:finder"],
+        ["xpath=//input[@id='mobile']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "9428995394"
+    }, {
+      "id": "654c4acd-c38d-4276-8d60-4ad6ef433477",
+      "comment": "",
+      "command": "click",
+      "target": "id=currentPassword",
+      "targets": [
+        ["id=currentPassword", "id"],
+        ["css=#currentPassword", "css:finder"],
+        ["xpath=//input[@id='currentPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table[2]/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//table[2]/tbody/tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "da1c6049-e7a1-4dd5-86ba-eb7021511bc5",
+      "comment": "",
+      "command": "type",
+      "target": "id=currentPassword",
+      "targets": [
+        ["id=currentPassword", "id"],
+        ["css=#currentPassword", "css:finder"],
+        ["xpath=//input[@id='currentPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table[2]/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//table[2]/tbody/tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "#Jeet@3004"
+    }, {
+      "id": "ec692ac6-935c-461a-a277-4dea34b1c9cb",
+      "comment": "",
+      "command": "click",
+      "target": "id=newPassword",
+      "targets": [
+        ["id=newPassword", "id"],
+        ["css=#newPassword", "css:finder"],
+        ["xpath=//input[@id='newPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table[2]/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//table[2]/tbody/tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04c8446b-9bbd-4d6e-8ed8-0e3641b683ed",
+      "comment": "",
+      "command": "type",
+      "target": "id=newPassword",
+      "targets": [
+        ["id=newPassword", "id"],
+        ["css=#newPassword", "css:finder"],
+        ["xpath=//input[@id='newPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div/table[2]/tbody/tr[3]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//table[2]/tbody/tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": "#JEet@3004"
+    }, {
+      "id": "53af6436-cdbf-4735-8417-2c74595afa02",
+      "comment": "",
+      "command": "click",
+      "target": "css=.px-6:nth-child(1)",
+      "targets": [
+        ["css=.px-6:nth-child(1)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/form/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Save Changes')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a4692a68-ea50-4aea-8efd-9a7c68842eca",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["c20bc964-d706-4111-88c2-874ba4ec0f86"]
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
