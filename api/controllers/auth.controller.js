@@ -7,8 +7,8 @@ import { validateEmail, validatePassword } from "../utils/validation.js";
 export const signup = async (req, res, next) => {
     const {username, email, password} = req.body;
 
-    const validUser = await User.findOne({username});
-    if (validUser) return next(errorHandler(409, 'Username already Exists!'));
+    // const validUser = await User.findOne({username});
+    // if (validUser) return next(errorHandler(409, 'Username already Exists!'));
 
     if (!validateEmail(email)) return next(errorHandler(400, 'Invalid Email Format'));
 

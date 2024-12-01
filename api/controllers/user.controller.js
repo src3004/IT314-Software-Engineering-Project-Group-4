@@ -15,12 +15,12 @@ export const updateUser = async (req, res, next) => {
     if (req.user.id !== req.params.id) return next(errorHandler(401, "You can only update your own account!"));
     try {
         const currentUser = await User.findOne({_id: req.params.id});
-        if (req.body.username==='') return next(errorHandler(400, 'Username cannot be empty!'));
-        if (req.body.username)
-        {
-            const validUser = await User.findOne({username: req.body.username});
-            if (req.body.username!==currentUser.username && validUser) return next(errorHandler(409, 'Username already Exists!'));
-        }
+        if (req.body.username==='') return next(errorHandler(400, 'Name cannot be empty!'));
+        // if (req.body.username)
+        // {
+        //     const validUser = await User.findOne({username: req.body.username});
+        //     if (req.body.username!==currentUser.username && validUser) return next(errorHandler(409, 'Username already Exists!'));
+        // }
 
         if (req.body.email || req.body.email==='')
         {

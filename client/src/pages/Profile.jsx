@@ -36,8 +36,7 @@ export default function Profile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (e.target.mobile.value<1000000000 || e.target.mobile.value>9999999999)
+    if (e.target.mobile.value!=='' && e.target.mobile.value<1000000000 || e.target.mobile.value>9999999999)
     {
       dispatch(updateUserFailure('Mobile number must be of 10 digits!'));
       return;
