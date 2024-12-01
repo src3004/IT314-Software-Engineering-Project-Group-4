@@ -19,3 +19,26 @@ export const getTransaction = async (req, res, next) => {
         next (error);
     }
 };
+
+export const getTransactions = async (req, res, next) => {
+    if (req.user.id === req.params.id)
+    {
+        try {
+            const sent = await Transaction.find({userId: req.params.id});
+            const received = await Transaction.find({sellerId: req.params.id});
+
+            const sentWithType = sent.map(transaction => ({ ...transaction._doc, type: 'sent' }));
+            const receivedWithType = received.map(transaction => ({ ...transaction._doc, type: 'received' }));
+
+            const transactions = [...sentWithType, ...receivedWithType].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+            res.status(200).json(transactions);
+        } catch (error) {
+            next(error);
+        }
+    }
+    else
+    {
+        return next(errorHandler(401, 'You can only view your own transactions!'));
+    }
+};

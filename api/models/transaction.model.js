@@ -10,6 +10,10 @@ const transactionSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        sellerId: {
+            type: String,
+            required: true,
+        },
         listingId: {
             type: String,
             required: true,
@@ -19,6 +23,10 @@ const transactionSchema = new mongoose.Schema(
             required: true,
         },
         image: {
+            type: String,
+            required: true,
+        },
+        date: {
             type: String,
             required: true,
         },

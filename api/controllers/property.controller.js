@@ -45,6 +45,9 @@ export const bookVisitSlot = async (req, res, next) => {
 
   if (req.params.id !== req.user.id) return next(errorHandler(401, 'You can only book you own Visit Slots!'));
 
+  const slot = await VisitSlot.findOne({buyerId: req.body.buyerId, listingId: req.body.listingId, date: req.body.date, visitSlot: req.body.visitSlot});
+  if (slot) return next(errorHandler(409, 'Selected Slot is already Booked!'));
+
   try {
     const visitSlot = await VisitSlot.create(req.body);
     res.status(200).json(visitSlot);
