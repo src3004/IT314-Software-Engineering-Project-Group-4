@@ -1,0 +1,104 @@
+{
+  "id": "8fa52268-e2ed-47c6-bbb7-4f4ac1d7e634",
+  "version": "2.0",
+  "name": "Favourite page",
+  "url": "https://estatesphere.onrender.com/",
+  "tests": [{
+    "id": "2df267f6-3a52-477d-b4c5-07997609fa17",
+    "name": "Favourites",
+    "commands": [{
+      "id": "3c6c5984-1adb-4c99-a6ba-e55c8313d6b7",
+      "comment": "",
+      "command": "open",
+      "target": "https://estatesphere.onrender.com/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "259c8962-0a07-4662-9297-729fa339cb80",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3903085f-6298-4396-9bff-1089a0eb4679",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Details",
+      "targets": [
+        ["linkText=View Details", "linkText"],
+        ["css=div:nth-child(1) > div > div > .rounded-md", "css:finder"],
+        ["xpath=//a[contains(text(),'View Details')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/listing/674865484e5b413deb1db740')])[2]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "37d910bd-759f-4109-ab21-1676146c16d4",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a2fe05b-3806-4ff4-87ca-743b0cecb66d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.lucide",
+      "targets": [
+        ["css=.lucide", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "83a89632-3e7e-47cf-954a-65f952e401eb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Favourites",
+      "targets": [
+        ["linkText=Favourites", "linkText"],
+        ["css=li:nth-child(3) > .className\\=\\\"text-white", "css:finder"],
+        ["xpath=//a[contains(text(),'Favourites')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/favourites')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Favourites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8abd40cd-cedd-4443-8200-16fa090520a5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.property-image",
+      "targets": [
+        ["css=.property-image", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/a/div", "xpath:idRelative"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d5a7189-ec7e-405e-b4de-d3326ee93b11",
+      "comment": "",
+      "command": "click",
+      "target": "css=.remove-btn",
+      "targets": [
+        ["css=.remove-btn", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Remove')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c1a88d12-0f0b-488a-a98e-cac09ed44d50",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2df267f6-3a52-477d-b4c5-07997609fa17"]
+  }],
+  "urls": ["https://estatesphere.onrender.com/"],
+  "plugins": []
+}
