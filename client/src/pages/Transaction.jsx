@@ -146,9 +146,11 @@ useEffect(() => {
             body: JSON.stringify({
               transactionId: response.razorpay_payment_id,
               userId: params.buyerId,
+              sellerId: params.sellerId,
               listingId: params.listingId,
               name: listing.name,
               image: listing.imageUrls[0],
+              date: new Date().toLocaleDateString('en-GB'),
               tokenAmount: listing.tokenAmount
             }),
           });
@@ -250,7 +252,7 @@ useEffect(() => {
       <div>
       {showConfetti && <Confetti numberOfPieces={200} />}
     <div style={styles.container}>
-      <div style={styles.header}>Real Estate Bills</div>
+      <div style={styles.header}>Estate Sphere Bills</div>
       <div style={styles.content}>
         <p style={{ textAlign: "center", marginBottom: "20px" }}>
           Are you sure you want to continue with this token payment, <b>{buyer.username}</b>?

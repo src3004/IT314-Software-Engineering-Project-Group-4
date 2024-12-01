@@ -1,57 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Transactions.css";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Transactions = () => {
-  const transactions = [
-    {
-      id: "4510241415",
-      name: "Sunrise Haven",
-      date: "07/12/2024",
-      amount: "5000 ₹",
-      // image: sunriseHaven,
-    },
-    {
-      id: "4510241420",
-      name: "Oakwood Gardens",
-      date: "08/11/2024",
-      amount: "15000 ₹",
-      // image: oakwoodGardens,
-    },
-    {
-      id: "4510241435",
-      name: "Haven Heights",
-      date: "14/10/2024",
-      amount: "10000 ₹",
-      // image: havenHeights,
-    },
-  ];
+  const { currentUser } = useSelector((state) => state.user);
+  const [userTransactions, setUserTransactions] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+    setLoading(true);
+    setError(false);
+    try {
+      const res = await fetch(`/api/transaction/get/${currentUser._id}`);
+      const data = await res.json();
+      if (data.success === false) {
+        setError(true);
+        return;
+      }
+      setUserTransactions(data);
+    } catch (err) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+    fetchTransactions();
+  }, [currentUser]);
 
   return (
     <div className="bookedslots">
       <h2 className="font-semibold text-2xl text-center mb-4" style={{color: '#2d9c2d'}}>Transactions</h2>
-      <div className="bookedslots-container">
-        {transactions.map((transaction) => (
-          <div className="transactions-card" key={transaction.id}>
-            <img
+      {loading && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Loading...</p>}
+      {error && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Error showing Transactions</p>}
+      {userTransactions && userTransactions.length === 0 && (
+        <div className='text-gray-700 text-center font-semibold' style={{padding: 225}}>No Transactions Found</div>
+      )}
+      {userTransactions && !loading && !error && (
+
+        <div className="bookedslots-container">
+        {userTransactions.map((transaction) => (
+          <div className="transactions-card" key={transaction._id}>
+            <Link to={`/listing/${transaction.listingId}`}><img
               src={transaction.image}
               alt={transaction.name}
               className="bookedslots-image"
-            />
+              /></Link>
             <div className="bookedslots-details">
               <h2>{transaction.name}</h2>
               <p>
                 <strong>Date:</strong> {transaction.date}
               </p>
-              <p>
-                <strong>Token Amount:</strong> {transaction.amount}
+              <p style={{color: `${transaction.type==='received'?'#2d572c':'#d32f2f'}`}}>
+                <strong>{(transaction.type==='received')?'Received':'Sent'}: ₹ {transaction.tokenAmount}</strong>
               </p>
             </div>
-            <button className="transactions-button">
-              Transaction ID: {transaction.id}
+            <button type="button" className={`transactions-button ${transaction.type}`}>
+              Transaction ID: {transaction.transactionId}
             </button>
           </div>
         ))}
       </div>
+      )}
     </div>
   );
 };

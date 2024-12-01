@@ -62,7 +62,7 @@
     color: #555;
   }
   
-  .transactions-button {
+  .transactions-button.received {
     background-color: #e6ffe6;
     color: #2d572c;
     border: 1px solid #2d572c;
@@ -74,17 +74,17 @@
     text-align: center;
   }
 
-  /* .transactions-button {
-    background-color: #ffe6e6;
-    color: #d32f2f;
-    border: 1px solid #d32f2f;
+  .transactions-button.sent {
+    /* background-color: #fffbe6; */
+    /* color: #d6a20a; */
+    border: 1px solid ;
     font-weight: bold;
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 14px;
     text-align: center;
-  } */
+  }
   
   /* .transactions-button:hover {
     background-color: #008000;
