@@ -1,0 +1,218 @@
+{
+  "id": "cf850547-b4b2-49cd-a139-7da5bec75a43",
+  "version": "2.0",
+  "name": "Transaction page",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "5741b4eb-61c2-4466-bdb2-8efed9355e96",
+    "name": "Transaction",
+    "commands": [{
+      "id": "a9d7bce9-4174-4be4-929c-1af220e19551",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a979d74f-349d-4235-83ac-e5bc484698ca",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1e7989df-08c7-4e32-a24a-fbcaf04bfc64",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Details",
+      "targets": [
+        ["linkText=View Details", "linkText"],
+        ["css=div:nth-child(1) > div > div > .rounded-md", "css:finder"],
+        ["xpath=//a[contains(text(),'View Details')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/listing/674865484e5b413deb1db740')])[2]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "02f0a41a-69bd-4969-a8a2-665f934d2649",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1ff44969-83d5-44a4-848c-2a0a368503e6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pay Token Amount",
+      "targets": [
+        ["linkText=Pay Token Amount", "linkText"],
+        ["css=.btn:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Pay Token Amount')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/transaction/6745f4ebf4556dbe51f862e8/67486167118e4afd8900a087/674865484e5b413deb1db740')]", "xpath:href"],
+        ["xpath=//div[4]/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Pay Token Amount')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ffd14ee5-5b1f-4a09-9e65-ffa8d836547a",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b311893b-bcf1-426c-97ed-e40b7e655355",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mb-3",
+      "targets": [
+        ["css=.mb-3", "css:finder"],
+        ["xpath=//div[@id='root']/div/main/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Pay Now')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4bb6bcc-3c0d-4ff5-92d0-42934663269b",
+      "comment": "",
+      "command": "selectFrame",
+      "target": "index=0",
+      "targets": [
+        ["index=0"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d5ed8f6-1a6d-4990-a2bf-92dcd50d26fe",
+      "comment": "",
+      "command": "click",
+      "target": "css=.rounded-tr-lg > .relative",
+      "targets": [
+        ["css=.rounded-tr-lg > .relative", "css:finder"],
+        ["xpath=//div[@id='nav-sidebar']/div/label[2]/div/div", "xpath:idRelative"],
+        ["xpath=//label[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8775ec2a-5ca8-41a3-9f53-7afad87e9ec3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.rounded-tr-lg > .relative",
+      "targets": [
+        ["css=.rounded-tr-lg > .relative", "css:finder"],
+        ["xpath=//div[@id='nav-sidebar']/div/label[3]/div/div", "xpath:idRelative"],
+        ["xpath=//label[3]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f90302f5-3072-4133-b611-0f9ef3de61b4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.rounded-tr-lg > .relative",
+      "targets": [
+        ["css=.rounded-tr-lg > .relative", "css:finder"],
+        ["xpath=//div[@id='nav-sidebar']/div/label[4]/div/div", "xpath:idRelative"],
+        ["xpath=//label[4]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4fe5280d-f491-42b8-bec6-cf3e3c49f2f7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.relative:nth-child(1) > .bg-surface-25 .-mr-\\[5px\\]:nth-child(1)",
+      "targets": [
+        ["css=.relative:nth-child(1) > .bg-surface-25 .-mr-\\[5px\\]:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='nav-sidebar']/div/label/div/div/span/div/div", "xpath:idRelative"],
+        ["xpath=//span/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40a9d35e-6c97-4ae0-ab73-26face1c8809",
+      "comment": "",
+      "command": "click",
+      "target": "name=card.number",
+      "targets": [
+        ["name=card.number", "name"],
+        ["css=.pr-12", "css:finder"],
+        ["xpath=//input[@name='card.number']", "xpath:attributes"],
+        ["xpath=//div[@id='main-stack-container']/div/div/div/div/div[2]/div/div/div[2]/div/form/div/div/label/input", "xpath:idRelative"],
+        ["xpath=//form/div/div/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1d9ffb4-d92e-4981-be09-a3abf21c52cf",
+      "comment": "",
+      "command": "click",
+      "target": "name=card.expiry",
+      "targets": [
+        ["name=card.expiry", "name"],
+        ["css=.rounded-r-none", "css:finder"],
+        ["xpath=//input[@name='card.expiry']", "xpath:attributes"],
+        ["xpath=//div[@id='main-stack-container']/div/div/div/div/div[2]/div/div/div[2]/div/form/div/div[2]/label/input", "xpath:idRelative"],
+        ["xpath=//div[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e75484a5-dd2d-44af-a0c6-6340877c291a",
+      "comment": "",
+      "command": "click",
+      "target": "name=card.cvv",
+      "targets": [
+        ["name=card.cvv", "name"],
+        ["css=.rounded-l-none", "css:finder"],
+        ["xpath=//input[@name='card.cvv']", "xpath:attributes"],
+        ["xpath=//div[@id='main-stack-container']/div/div/div/div/div[2]/div/div/div[2]/div/form/div/div[2]/label[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/label[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6eaffd87-fb7c-47a7-8628-2599b666a273",
+      "comment": "",
+      "command": "click",
+      "target": "name=card.name",
+      "targets": [
+        ["name=card.name", "name"],
+        ["css=.rounded-tr-none", "css:finder"],
+        ["xpath=//input[@name='card.name']", "xpath:attributes"],
+        ["xpath=//div[@id='main-stack-container']/div/div/div/div/div[2]/div/div/div[2]/div/form/div/label/input", "xpath:idRelative"],
+        ["xpath=//form/div/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "29e3bb28-4e97-4278-99c7-6b80a0df3c9f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.hover\\3A border-danger-700\\/60 svg",
+      "targets": [
+        ["css=.hover\\3A border-danger-700\\/60 svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bdb5730-16a9-4f64-a0d8-fc37d58c8891",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bg-cta:nth-child(2)",
+      "targets": [
+        ["css=.bg-cta:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@name='button'])[3]", "xpath:attributes"],
+        ["xpath=//div[@id='razorpay-checkout-v2-container']/div[3]/div/div/div/div/div/div/div/div/div/div[2]/div[2]/button[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Yes, exit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "98636268-c3a7-4858-ad37-5d50db240c0a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["5741b4eb-61c2-4466-bdb2-8efed9355e96"]
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
