@@ -1,0 +1,174 @@
+{
+  "id": "0fd8730c-c2bd-43cc-9325-aed907dc1b0c",
+  "version": "2.0",
+  "name": "Book a Slot",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "798cb27a-ba5a-4cf2-8c51-04c2486ccf1c",
+    "name": "Book a Slot",
+    "commands": [{
+      "id": "08d34532-fed2-40b9-9d05-45ebdd6afde5",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "894e402b-9411-4ede-8efe-b1917530ff8f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "821bcf7b-ab9b-4366-888b-2bb7126a58d3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=View Details",
+      "targets": [
+        ["linkText=View Details", "linkText"],
+        ["css=div:nth-child(1) > div > div > .rounded-md", "css:finder"],
+        ["xpath=//a[contains(text(),'View Details')]", "xpath:link"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div/div/div/div[2]/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/listing/674865484e5b413deb1db740')])[2]", "xpath:href"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'View Details')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "75940938-bce8-43e5-93f0-8a4f5734ec56",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,0)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c96a51c5-5caa-4e5d-a79b-0753c8a43017",
+      "comment": "",
+      "command": "click",
+      "target": "id=date",
+      "targets": [
+        ["id=date", "id"],
+        ["css=#date", "css:finder"],
+        ["xpath=//select[@id='date']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f7d5700-c7ff-438c-bc19-2c834cc2b338",
+      "comment": "",
+      "command": "select",
+      "target": "id=date",
+      "targets": [],
+      "value": "label=03/12/2024"
+    }, {
+      "id": "c7d538ef-b5db-44f7-916c-5ecbd7525ab5",
+      "comment": "",
+      "command": "click",
+      "target": "id=visitSlot",
+      "targets": [
+        ["id=visitSlot", "id"],
+        ["css=#visitSlot", "css:finder"],
+        ["xpath=//select[@id='visitSlot']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/div[2]/select", "xpath:idRelative"],
+        ["xpath=//div[2]/select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "741fe3b0-2a51-40c7-83e8-26a6d19c4d83",
+      "comment": "",
+      "command": "select",
+      "target": "id=visitSlot",
+      "targets": [],
+      "value": "label=7:00 AM - 8:00 AM"
+    }, {
+      "id": "f04d5ed1-4d3e-4eba-a836-f4fc67d12958",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(4)",
+      "targets": [
+        ["css=.btn:nth-child(4)", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/main/div/div[2]/div/div[4]/form/div/button", "xpath:idRelative"],
+        ["xpath=//form/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Book Visit Slot')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf376994-3312-47b8-b3d5-875a803799c6",
+      "comment": "",
+      "command": "assertAlert",
+      "target": "Slot booked successfully!",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "608ed3de-3323-478f-8ffa-fc874cb21343",
+    "name": "Cancel Appointment",
+    "commands": [{
+      "id": "ae049158-395d-4ad1-ad91-11b3c25bf3a1",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d2a16cdd-c052-4e2b-9fd7-e08bc8bdf385",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "212f7253-9e12-49df-80bd-68b995768fd2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Booked Slots",
+      "targets": [
+        ["linkText=Booked Slots", "linkText"],
+        ["css=li:nth-child(3) > .className\\=\\\"text-white", "css:finder"],
+        ["xpath=//a[contains(text(),'Booked Slots')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/visit-slots')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Booked Slots')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "df27bf59-d3de-40d6-92c4-454770d3f0a4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bookedslots-card:nth-child(1) .bookedslots-cancel-button",
+      "targets": [
+        ["css=.bookedslots-card:nth-child(1) .bookedslots-cancel-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Cancel Appointment')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1bd72bea-eb44-4c75-97d1-dfafe0afa62d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bookedslots-cancel-button",
+      "targets": [
+        ["css=.bookedslots-cancel-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Cancel Appointment')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "bfbdec9c-14c4-4dc4-aab5-2b23744ad55a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["798cb27a-ba5a-4cf2-8c51-04c2486ccf1c"]
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
