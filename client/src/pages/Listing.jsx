@@ -14,6 +14,11 @@ const Listing = () => {
   const [error, setError] = useState(false);
   const [bookSlotError, setBookSlotError] = useState(null);
   const [bookSlotLoading, setBookSlotLoading] = useState(false);
+  const [isFavLoad,setFavLoad] = useState(false);
+  const [isFavError,setFavError] = useState(false);
+  const [favouriteError, setFavouriteError] = useState(false);
+  const [favouriteLoading, setFavouriteLoading] = useState(false);
+  const [fav,setFav] = useState(null);
   const { currentUser }  = useSelector((state) => state.user);
   const params = useParams();
   useEffect(() => {
@@ -72,6 +77,101 @@ const Listing = () => {
 
     generateDates();
   }, []);
+
+  useEffect(()=>
+  {
+    const checkfav = async()=> {
+      try {
+        setFavError(false);
+        setFavLoad(true);
+        const res = await fetch(`/api/favourite/check/${params.listingId}`);
+        if(res.success===false)
+        {
+          setFavError(true);
+          setFavLoad(false);
+          return;
+        }
+        setFavError(false);
+        setFavLoad(false);
+        if(res.status!==204)
+        {
+          const data = await res.json();
+          setIsWishlisted(true);
+          setFav(data._id);
+        }
+      } catch (error) {
+        setFavError(true);
+        setFavLoad(false);
+      };
+     }
+    checkfav();
+  }, [params.listingId])
+ 
+
+  const addfav = async () => {
+    if(!isWishlisted)
+    {
+      const form1 = {
+        userId: currentUser._id,
+        listingId: listing._id,
+        name: listing.name,
+        price: listing.price,
+        type: listing.type,
+        city: listing.city,
+        bedrooms: listing.bedrooms,
+        image:listing.imageUrls[0],
+        parking:listing.parking,
+      };
+      setFavouriteError(false);
+      setFavouriteLoading(true);
+      try {
+        const res = await fetch('/api/favourite/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({form1}),
+        });
+        const data = await res.json();
+        if (data.success === false)
+        {
+          setFavouriteError(data.message);
+          setFavouriteLoading(false);
+          return;
+        }
+        setFavouriteError(false);
+        setFavouriteLoading(false);
+        setFav(data._id);
+        setIsWishlisted(true);
+      } catch (error) {
+        setFavouriteError(error);
+        setFavouriteLoading(false);
+      };
+    }
+    else
+    {
+      setFavouriteError(false);
+      setFavouriteLoading(true);
+      try {
+        const res = await fetch(`/api/favourite/delete/${fav}`, {
+          method: 'DELETE',
+        });
+        const data = await res.json();
+        if (data.success === false)
+        {
+          setFavouriteError(data.message);
+          setFavouriteLoading(false);
+          return;
+        }
+        setFavouriteError(false);
+        setFavouriteLoading(false);
+        setIsWishlisted(false);
+      } catch (error) {
+        setFavouriteError(error);
+        setFavouriteLoading(false);
+      }
+    }
+  }
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => (listing ? (prevIndex === 0 ? listing.imageUrls.length - 1 : prevIndex - 1): 0));
@@ -326,7 +426,6 @@ const Listing = () => {
       {error && <p className='text-center my-7 text-2xl font-semibold text-gray-700'>Something went Wrong!</p>}
       {listing && !loading && !error && (
         <div style={styles.container}>
-
       <div style={styles.heroSection}>
   {listing.imageUrls.length > 1 && <button
     style={{ ...styles.navigationButton, ...styles.prevButton }}
@@ -379,9 +478,11 @@ const Listing = () => {
                 <p style={styles.address}>{listing.address}</p>
               </div>
             </div>
+            <div className='flex flex-col gap-4'>
             {(currentUser && (listing.userRef !== currentUser._id)) ? (
             <button
-              onClick={() => setIsWishlisted(!isWishlisted)}
+              disabled={isFavLoad || favouriteLoading}
+              onClick={() => addfav()}
               style={styles.wishlistButton}
             >
               <Heart
@@ -389,9 +490,10 @@ const Listing = () => {
                 fill={isWishlisted ? 'white' : 'none'}
                 size={20}
                 />
-              {isWishlisted ? 'Favorited' : 'Add to Favourite'}
+              {isWishlisted ? 'Favorited' : 'Add to Favourites'}
             </button>): (!currentUser)? (
                 <button
+                disabled={isFavLoad || favouriteLoading}
                 onClick={handleLogin}
                 style={styles.wishlistButton}
               >
@@ -400,10 +502,13 @@ const Listing = () => {
                   fill={isWishlisted ? 'white' : 'none'}
                   size={20}
                   />
-                {isWishlisted ? 'Favorited' : 'Add to Favourite'}
+                {isWishlisted ? 'Favorited' : 'Add to Favourites'}
               </button>):(
                 <div></div>
               )}
+              {isFavError && <p className='text-red-700'>{isFavError}</p>}
+              {favouriteError && <p className='text-red-700'>{favouriteError}</p>}
+              </div>
           </div>
 
 
