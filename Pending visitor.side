@@ -1,0 +1,107 @@
+{
+  "id": "2539cabe-208c-4000-8609-59aeb1072249",
+  "version": "2.0",
+  "name": "Pending visitor",
+  "url": "https://estatereal-mf2n.onrender.com",
+  "tests": [{
+    "id": "54178ea4-de26-426a-a187-665902332f9a",
+    "name": "Mark as visited",
+    "commands": [{
+      "id": "3545d8ed-9f8a-45d0-a3f2-bfc50ce76ed6",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04a4dd21-6d44-4dd5-8597-c576b78fd503",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "99284eb4-d347-4424-a684-227b6ece3b04",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pending Visitors",
+      "targets": [
+        ["linkText=Pending Visitors", "linkText"],
+        ["css=li:nth-child(2) > .className\\=\\\"text-white", "css:finder"],
+        ["xpath=//a[contains(text(),'Pending Visitors')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/pending-visitors')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Pending Visitors')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "44e0bea3-c0b8-43e5-b04e-f30b77cf66f4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bookedslots-visited-button",
+      "targets": [
+        ["css=.bookedslots-visited-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Mark as Visited')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "80a1abb9-5d7c-463c-b748-d3ab4c9bb356",
+    "name": "Cancel Appointment",
+    "commands": [{
+      "id": "49c8af81-1546-4d7f-ad63-51d7faad09f0",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "57b3a4a2-e34b-4b9e-8ec5-d5ca4a166a9c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5f1fab5f-9e06-4cef-887a-ec6684809d0d",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Pending Visitors",
+      "targets": [
+        ["linkText=Pending Visitors", "linkText"],
+        ["css=li:nth-child(2) > .className\\=\\\"text-white", "css:finder"],
+        ["xpath=//a[contains(text(),'Pending Visitors')]", "xpath:link"],
+        ["xpath=//div[@id='root']/nav/div/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/pending-visitors')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Pending Visitors')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c4b65388-ebd9-4145-b4a2-50934edbf2a9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.bookedslots-cancel-button",
+      "targets": [
+        ["css=.bookedslots-cancel-button", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/div/div[2]/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Cancel Appointment')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8f877a26-62c4-4fcb-b8fa-f473357fe086",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["54178ea4-de26-426a-a187-665902332f9a"]
+  }],
+  "urls": ["https://estatereal-mf2n.onrender.com/"],
+  "plugins": []
+}
