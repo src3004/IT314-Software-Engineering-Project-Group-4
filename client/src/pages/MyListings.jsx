@@ -80,7 +80,7 @@ export default function MyListings() {
             <Link to={`/listing/${listing._id}`}><h3 className='font-semibold'>{listing.name}</h3></Link>
             <div className='flex justify-center gap-12'>
               <p className="price">₹ {listing.price}</p>
-              <p className='price'>For {((listing.type)=='sale'?'Sale':'Rent')}</p>
+              <p className='price'>For {((listing.type)==='sale'?'Sale':'Rent')}</p>
             </div>
              <div className="location details">
               <span>

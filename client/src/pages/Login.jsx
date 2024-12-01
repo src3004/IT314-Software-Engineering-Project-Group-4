@@ -79,7 +79,7 @@ export default function Login() {
           dispatch(signInFailure(Error.message));
       };
   };
-  // console.log(formData);
+
   const handleRegisterClick = () => {
     setError(null);
     dispatch(clearError());
@@ -108,7 +108,7 @@ export default function Login() {
       <div className="sign-up">
         <form onSubmit={handleSubmit}>
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3ysGLsZfbPr6zprdlKrSSo30yCkac7NB9iw&s" alt="" className='img' />
-          <h1>Real Estate</h1>
+          <h1>Estate Sphere</h1>
           <br />
           <h2>Create Account</h2>
           <input type="text" placeholder="Name" required id='username' maxLength='30' onChange={handleChange}/>
@@ -121,7 +121,7 @@ export default function Login() {
       <div className="sign-in">
         <form onSubmit={handleSubmit2}>
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3ysGLsZfbPr6zprdlKrSSo30yCkac7NB9iw&s" alt="" className='img' />
-          <h1>Real Estate</h1>
+          <h1>Estate Sphere</h1>
           <br />
           <h2>Sign In</h2>
           <input type="text" placeholder="Email" required id='email2' onChange={handleChange}/>

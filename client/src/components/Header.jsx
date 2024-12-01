@@ -11,8 +11,8 @@ export default function Header() {
         <div className="text-xl font-bold">
           <Link to="/" className="hover:text-gray-200">
             <h1 className="flex flex-wrap">
-              <span className="text-white">Real</span>
-              <span className="text-slate-200">Estate</span>
+              <span className="text-white">Estate</span>
+              <span className="text-slate-200">Sphere</span>
             </h1>
           </Link>
         </div>
@@ -22,6 +22,8 @@ export default function Header() {
         {/* Navigation Links */}
         <ul className="flex items-center space-x-7">
           <li><Link to="/about-us" className='text-white font-semibold text-md hover:text-gray-200'>About Us</Link></li>
+          {currentUser && <li><Link to="/transactions" className='className="text-white font-semibold text-md hover:text-gray-200'>Transactions</Link></li>}
+          {currentUser && <li><Link to="/favourites" className='className="text-white font-semibold text-md hover:text-gray-200'>Favourites</Link></li>}
           {currentUser && <li><Link to="/pending-visitors" className='className="text-white font-semibold text-md hover:text-gray-200'>Pending Visitors</Link></li>}
           {currentUser && <li><Link to="/visit-slots" className='className="text-white font-semibold text-md hover:text-gray-200'>Booked Slots</Link></li>}
           {currentUser && <li><Link to="/my-listings" className='className="text-white font-semibold text-md hover:text-gray-200'>My Properties</Link></li>}

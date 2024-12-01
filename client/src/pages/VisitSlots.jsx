@@ -81,9 +81,9 @@ const VisitSlots = () => {
               <Link to={`/listing/${visitSlot.listingId}`}><img src={visitSlot.image} alt={visitSlot.name} className="bookedslots-image" /></Link>
               <div className="bookedslots-details">
                 <h2>{visitSlot.name}</h2>
-                <p>Contact: {visitSlot.sellerContact}</p>
-                <p>Date: {visitSlot.date}</p>
-                <p>Time: {visitSlot.visitSlot}</p>
+                <p><strong>Contact:</strong> {visitSlot.sellerContact}</p>
+                <p><strong>Date:</strong> {visitSlot.date}</p>
+                <p><strong>Time:</strong> {visitSlot.visitSlot}</p>
               </div>
               <div className="bookedslots-actions">
                 <span

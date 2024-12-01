@@ -81,10 +81,10 @@ const PendingVisitors = () => {
               <Link to={`/listing/${pendingVisitor.listingId}`}><img src={pendingVisitor.image} alt={pendingVisitor.name} className="bookedslots-image" /></Link>
               <div className="bookedslots-details">
                 <h2>{pendingVisitor.name}</h2>
-                <p>Buyer: {pendingVisitor.buyerName}</p>
-                <p>Contact: {pendingVisitor.buyerContact}</p>
-                <p>Date: {pendingVisitor.date}</p>
-                <p>Time: {pendingVisitor.visitSlot}</p>
+                <p><strong>Buyer:</strong> {pendingVisitor.buyerName}</p>
+                <p><strong>Contact:</strong> {pendingVisitor.buyerContact}</p>
+                <p><strong>Date:</strong> {pendingVisitor.date}</p>
+                <p><strong>Time:</strong> {pendingVisitor.visitSlot}</p>
               </div>
               <div className="bookedslots-actions">
                 <span
