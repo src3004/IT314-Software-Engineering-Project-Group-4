@@ -264,7 +264,7 @@ const Listing = () => {
     wishlistButton: {
       display: 'flex',
       alignItems: 'center',
-      gap: '8px',
+      gap: '10px',
       padding: '12px 24px',
       borderRadius: '8px',
       cursor: 'pointer',
@@ -309,10 +309,28 @@ const Listing = () => {
       color: '#333',
       marginBottom: '16px',
     },
+    formSection: {
+      marginRight: '0',  // Adjust margin for smaller screens
+    },
     descriptionText: {
       color: '#666',
       lineHeight: '1.6',
       marginBottom: '24px',
+    },
+    paymentSection: {
+      backgroundColor: 'white',
+      padding: '32px',
+      borderRadius: '8px',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      marginBottom: '32px',
+      width: '100%',
+      maxWidth: '500px', // Limits the width on larger screens to avoid it stretching too far
+      boxSizing: 'border-box', // Ensures padding doesn't affect width calculation
+      textAlign: 'center',
+      '@media (max-width: 768px)': {
+        width: '100%', // Make sure it takes up the full width on mobile
+    maxWidth: '100%',
+      }
     },
     featuresGrid: {
       display: 'grid',
@@ -369,6 +387,17 @@ const Listing = () => {
           height: '500px',
           objectFit: 'cover',
           flexShrink: 0,
+        },
+        paymentWrapper: {
+          display: 'flex',
+          justifyContent: 'center', // This centers the content horizontally
+          alignItems: 'center', // This ensures the content is vertically centered
+          width: '100%',
+          padding: '20px', // Optional, just to give some spacing
+          '@media (max-width: 768px)': {
+            flexDirection: 'column', // Stack vertically on smaller screens
+            padding: '10px',
+          }
         },
   };
 
@@ -556,75 +585,76 @@ const Listing = () => {
           </div>
           
           {(currentUser && (listing.userRef !== currentUser._id)) ? (
-          <div style={styles.descriptionCard} className='flex'>
-          <form onSubmit={handleBookVisitSlot}>
-          <div style={{marginRight: 400}}>
-            <h2 style={styles.descriptionTitle}>Book Visit Slots</h2>
-            <div className='mb-6'>
-            <label htmlFor="date" className="block mb-1 font-semibold">Select Date:</label>
-            <select
-              id="date"
-              value={formData.date}
-              onChange={handleChange}
-              required
-              className="p-2 border rounded"
-              style={{maxWidth: 200}}
-            >
-              <option value="">
-                Choose a date
+  <div style={styles.descriptionCard} className='flex flex-col md:flex-row'>
+    <form onSubmit={handleBookVisitSlot} style={styles.formContainer}>
+      <div style={styles.formSection}>
+        <h2 style={styles.descriptionTitle}>Book Visit Slots</h2>
+        <div className='mb-6'>
+          <label htmlFor="date" className="block mb-1 font-semibold">Select Date:</label>
+          <select
+            id="date"
+            value={formData.date}
+            onChange={handleChange}
+            required
+            className="p-2 border rounded"
+            style={styles.input}
+          >
+            <option value="">Choose a date</option>
+            {dates.map((date) => (
+              <option key={date} value={date}>
+                {date}
               </option>
-              {dates.map((date) => (
-                <option key={date} value={date}>
-                  {date}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className='mb-6'>
-            <label htmlFor="visitSlot" className="block mb-1 font-semibold">Select Visit Slot:</label>
-            <select
-              id="visitSlot"
-              value={formData.visitSlot}
-              onChange={handleChange}
-              required
-              className="p-2 border rounded"
-              style={{maxWidth: 200}}
-            >
-              <option value="">
-                Choose visit slot
+            ))}
+          </select>
+        </div>
+        <div className='mb-6'>
+          <label htmlFor="visitSlot" className="block mb-1 font-semibold">Select Visit Slot:</label>
+          <select
+            id="visitSlot"
+            value={formData.visitSlot}
+            onChange={handleChange}
+            required
+            className="p-2 border rounded"
+            style={styles.input}
+          >
+            <option value="">Choose visit slot</option>
+            {listing.visitSlots.map((visitSlot) => (
+              <option key={visitSlot} value={visitSlot}>
+                {visitSlot}
               </option>
-              {listing.visitSlots.map((visitSlot) => (
-                <option key={visitSlot} value={visitSlot}>
-                  {visitSlot}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button
-            disabled={bookSlotLoading}
-            type="submit"
-            className='btn bg-green-600 p-2 text-md text-white font-semibold rounded-md mb-3'>
-            {bookSlotLoading ? 'Booking...': 'Book Visit Slot'}
-          </button>
-          {bookSlotError && <p className="text-red-700">{bookSlotError}</p>}
-          </div>
-          </form>
-          <div>
-          <h2 style={styles.descriptionTitle}>Pay Token Amount</h2>
-          <p className='font-semibold text-xl mb-6'>Token Amount: ₹ {listing.tokenAmount}</p>
-          <Link to={`/transaction/${currentUser._id}/${listing.userRef}/${listing._id}`}
-            className='btn bg-green-600 p-2 text-md text-white font-semibold rounded-md mb-3'>
-            Pay Token Amount
-          </Link>
-          </div>
-          </div>
-          ): (!currentUser)? (
-            <div className='flex gap-4'>
-            <button onClick={handleLogin} className='btn bg-green-600 p-2 text-lg text-white font-semibold rounded-md'>Book Visit Slots</button>
-            <button onClick={handleLogin} className='btn bg-green-600 p-2 text-lg text-white font-semibold rounded-md'>Pay Token Amount</button>
-          </div>):(
-            <div></div>
-          )}
+            ))}
+          </select>
+        </div>
+        <button
+          disabled={bookSlotLoading}
+          type="submit"
+          className='btn bg-green-600 p-2 text-md text-white font-semibold rounded-md mb-3'
+        >
+          {bookSlotLoading ? 'Booking...': 'Book Visit Slot'}
+        </button>
+        {bookSlotError && <p className="text-red-700">{bookSlotError}</p>}
+      </div>
+    </form>
+    <div style={styles.paymentWrapper}>
+    <div style={styles.paymentSection}>
+      <h2 style={styles.descriptionTitle}>Pay Token Amount</h2>
+      <p className='font-semibold text-xl mb-6'>Token Amount: ₹ {listing.tokenAmount}</p>
+      <Link to={`/transaction/${currentUser._id}/${listing.userRef}/${listing._id}`}
+        className='btn bg-green-600 p-2 text-md text-white font-semibold rounded-md mb-3'>
+        Pay Token Amount
+      </Link>
+    </div>
+    </div>
+  </div>
+) : (!currentUser) ? (
+  <div className='flex gap-4'>
+    <button onClick={handleLogin} className='btn bg-green-600 p-2 text-lg text-white font-semibold rounded-md'>Book Visit Slots</button>
+    <button onClick={handleLogin} className='btn bg-green-600 p-2 text-lg text-white font-semibold rounded-md'>Pay Token Amount</button>
+  </div>
+) : (
+  <div></div>
+)}
+
         </div>
       </div>
       </div>

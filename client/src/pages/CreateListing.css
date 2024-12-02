@@ -97,3 +97,56 @@ form select {
 .add-property .submit-button:hover {
   background-color: #238823;
 }
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-property .form-container {
+    padding: 1rem;
+  }
+
+  .add-property .first,
+  .add-property .second {
+    width: 100%;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .add-property .beds-baths input,
+  .add-property .price-input input {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .add-property .checkbox-group {
+    flex-direction: column;
+    
+  }
+
+  .add-property .file-upload {
+    flex-direction: column;
+  }
+
+  .add-property .upload-button {
+    width: 100%;
+  }
+
+  .add-property .submit-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-property .form-container {
+    padding: 0.5rem;
+  }
+  .add-property form input,
+  form textarea,
+  form select {
+    font-size: 0.9rem;
+  }
+  
+  .add-property .submit-button,
+  .add-property .upload-button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
